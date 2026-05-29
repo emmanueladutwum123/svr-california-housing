@@ -81,5 +81,5 @@ Source: Pace & Barry (1997) via `sklearn.datasets.fetch_california_housing`.
 ```
 Adutwum, E. (2026). Optimised Support Vector Regression for California Housing Price
 Prediction: The Critical Role of Feature Engineering and Hyperparameter Tuning.
-Submitted to SN Computer Science, Springer Nature.
+Submitted to Discover Artificial Intelligence, Springer Nature.
 ```
