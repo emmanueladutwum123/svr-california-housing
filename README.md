@@ -2,7 +2,7 @@
 
 **The Critical Role of Feature Engineering and Hyperparameter Tuning**
 
-> Submitted to Springer Nature SN Computer Science · 2026  
+> Under Revision · Targeting Discover Artificial Intelligence (Springer Nature) · 2026  
 > Author: Emmanuel Adutwum — Soka University of America
 
 ---
@@ -53,6 +53,13 @@ With a proper leakage-safe pipeline, domain-motivated feature engineering, and s
 | `Optimised_SVR_Paper_REVISED.pdf` | Compiled PDF (version submitted to Springer/arXiv) |
 
 ---
+
+## Submission History
+
+| Date | Journal | Status |
+|---|---|---|
+| May 2026 | Springer Nature — Machine Learning | Rejected (scope: applied domain paper; missing CIS) |
+| May 2026 | Discover Artificial Intelligence (Springer Nature) | Under revision / resubmission |
 
 ## Corrections in This Version (May 18, 2026)
 
