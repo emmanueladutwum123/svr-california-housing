@@ -1,0 +1,192 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{xr}
+\externaldocument{build/main}
+
+\input{numbers}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\setlength{\emergencystretch}{2em}
+\pagestyle{plain}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Contribution Information Sheet}\\[3pt]
+{\normalsize\itshape Discover Artificial Intelligence --- Springer Nature}\\[10pt]
+{\large A Controlled Reassessment of Support Vector Regression on the California\\
+Housing Benchmark with Feature Scaling, Feature Selection and Hyperparameter Tuning}
+\end{center}
+
+\vspace{6pt}
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\textbf{Corresponding author} & Emmanuel Adutwum \\
+\textbf{Affiliation}          & Soka University of America, Aliso Viejo, CA, USA \\
+\textbf{Email}                & \texttt{eadutwum@soka.edu} \\
+\textbf{Submission ID}        & 6cf4e30e-1a5b-4ad2-99e5-2320f0737507 \\
+\textbf{Stage}                & Major revision (resubmission) \\
+\end{tabular}
+\end{center}
+
+\vspace{4pt}
+\hrule
+\vspace{8pt}
+
+\section{Scientific question addressed}
+A recent comparative study (Preethi et al., \emph{SN Computer Science}, 2025) reported that
+Support Vector Regression ranks last among the regression algorithms it compared on the
+California Housing benchmark. This paper asks a precise question about that specific result:
+\emph{is the reported outcome a property of the algorithm, or of the configuration in which
+the algorithm was run?}
+
+The question is one of evaluation methodology and reproducibility in applied AI. It is
+answered by reproduction rather than by assertion: the configuration described in the prior
+study is re-run directly, components are added to it one at a time, and the resulting
+attribution is tested for robustness to the order in which those components are introduced.
+
+\section{Methodology}
+The workflow is defined as an explicit nine-stage procedure (S1--S9) with stated inputs and
+outputs, illustrated as a pipeline diagram in the manuscript. Every stage that estimates
+anything from data --- feature ranking, scaler assignment, scaler parameters, hyperparameters
+--- is fitted on the training portion only and re-fitted from scratch inside every fold of
+every resampling scheme. The evaluation comprises:
+
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item \textbf{Direct reproduction} of the prior configuration (eight raw features, RBF kernel,
+      a grid over $C$ and $\varepsilon$ only, no scaling), over \RepSeeds{} seeds.
+\item \textbf{Equal-budget model comparison}: all \NModels{} models receive identical
+      features, identical training rows and an identical tuning budget.
+\item \textbf{Corrected statistical inference}: \StatSplits{} identical splits, with the
+      Nadeau--Bengio corrected resampled $t$-test as the primary paired test and the
+      confidence interval computed correctly.
+\item \textbf{Order-independent ablation}: a four-factor full factorial design evaluated in
+      all \AblNcells{} cells, with Shapley attribution over all \AblNorders{} orderings.
+\item \textbf{Validation under dependence}: spatially blocked cross-validation using
+      $k$-means blocks on standardised centroids, plus feature selection repeated inside every
+      fold and fully nested estimates.
+\item \textbf{External replication}: the workflow applied unchanged to King County house
+      sales and Ames Housing.
+\end{enumerate}
+
+\section{Key findings}
+\begin{enumerate}[leftmargin=*,itemsep=3pt]
+\item \textbf{A correction to the record.} The value of $R^2 \approx 0.60$ widely associated
+      with the prior study's SVR is in fact the score of its linear, ridge and
+      polynomial-ridge models. Its SVR-RBF result is $R^2 \approx \PreethiReportedRtwo$. The
+      configuration it describes reproduces here at $\RepUnscaledDefault$ with library
+      defaults and $\RepUnscaledTuned$ when tuned, bracketing that value; adding a single
+      standardisation step to the identical pipeline yields $\RepScaledTuned$.
+\item \textbf{Order-independent attribution.} The apparent contribution of scaling varies by
+      \RangeScal{} in $R^2$ depending only on where it is placed in the ablation sequence.
+      The order-independent Shapley values are $\ShapScal$ (scaling), $\ShapTune$ (tuning),
+      $\ShapSelect$ (selection) and $\ShapDeriv$ (derived features). Single-path ablation
+      increments are therefore upper bounds, not independent contributions.
+\item \textbf{Ranking under equal conditions.} With identical data and an identical tuning
+      budget the tuned SVR ranks \SvrRankFull{} of \NModels{}, behind gradient-boosted trees,
+      and the paired differences survive the Nadeau--Bengio correction.
+\item \textbf{Spatial optimism dominates.} Spatially blocked cross-validation lowers the
+      estimate by \SpatialOptimism{} relative to random partitioning --- a larger effect than
+      any pipeline component measured in the study.
+\item \textbf{Two negative results.} The feature-specific scaling strategy proposed in the
+      earlier version of this work does \emph{not} outperform plain standardisation
+      ($\CfgManualFull$ against $\CfgUniformFull$ on an identical split), and the derived
+      features contribute little once selection and tuning are present. Both are reported
+      rather than omitted.
+\end{enumerate}
+
+\section{Specific contributions to the AI field}
+The contribution is methodological and diagnostic. \emph{No new learning algorithm is
+proposed}, and the paper makes no claim to have discovered that kernel methods require
+feature scaling --- a result established decades ago and cited as such.
+
+\begin{enumerate}[leftmargin=*,itemsep=3pt]
+\item \textbf{An order-independent ablation procedure for preprocessing pipelines.}
+      Evaluating the full factorial design and attributing components by Shapley value removes
+      the dependence of reported increments on the sequence in which components are
+      introduced. This is transferable to any staged pipeline and is what revealed that the
+      earlier single-path attribution was an artefact.
+\item \textbf{A worked correction of a published comparison.} A documented case in which a
+      benchmarking result is traced to configuration rather than to algorithm, including the
+      correction of a misreading in the earlier version of this work.
+\item \textbf{An evaluation protocol for dependent tabular data.} Corrected confidence
+      intervals, paired testing on identical splits under the Nadeau--Bengio correction,
+      selection inside the resampling loop, and spatially blocked validation --- with the
+      magnitude of each source of optimism quantified rather than asserted.
+\item \textbf{Fully generated reporting.} Every experiment writes a JSON record, and every
+      table, figure and in-text number in the manuscript is generated from those records. No
+      value is typed by hand, so text, tables and figures cannot diverge.
+\end{enumerate}
+
+\section{Significance and fit for Discover Artificial Intelligence}
+The journal's scope covers machine and deep learning, data analytics and AI-enabled
+data-driven techniques. Beyond the housing application, the paper addresses a question central
+to applied AI: how much of a reported algorithm ranking is a property of the algorithms and
+how much is a property of the experimental pipeline around them. The answer given here is
+specific and measured --- and, importantly, includes the finding that the validation design
+matters more than any preprocessing choice tested.
+
+Conclusions are explicitly restricted to the datasets and configurations examined. The
+California Housing dataset ships with scikit-learn, and both additional datasets are on
+OpenML, so every result is reproducible by any reader with a Python environment.
+
+\section{Intended audience}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item Researchers designing or reviewing comparative benchmarking studies
+\item ML practitioners evaluating kernel methods for tabular regression
+\item AutoML and pipeline-design researchers, for whom preprocessing sensitivity and
+      order-dependent attribution are core concerns
+\item Anyone modelling spatially structured tabular data, given the spatial-validation result
+\end{itemize}
+
+\section{Reproducibility}
+All code, the JSON record of every experiment reported, and the scripts that generate every
+table and figure are available at
+\url{https://github.com/emmanueladutwum123/svr-california-housing}.
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\texttt{main.tex} & Manuscript source (Springer Nature \texttt{sn-jnl}) \\
+\texttt{common.py} & Shared data loading, scaling, selection and pipeline code \\
+\texttt{e1--e8*.py} & One script per experiment, each writing a JSON record \\
+\texttt{make\_numbers.py}, \texttt{make\_tables.py}, \texttt{make\_figures.py}
+                    & Generate every number, table and figure from those records \\
+\texttt{results/*.json} & Complete result records for every configuration reported \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent Datasets: \texttt{sklearn.datasets.fetch\_california\_housing}; OpenML
+\texttt{house\_sales} (ID 42731); OpenML Ames Housing (ID 42165). All public, no special
+access required.
+
+\section{Keywords}
+Support Vector Regression; feature scaling; ablation analysis; Shapley attribution;
+reproducibility; spatial cross-validation; nested cross-validation; paired significance
+testing; benchmarking methodology; California Housing dataset.
+
+\section{Conflict of interest}
+The author declares no competing interests.
+
+\section{Data availability}
+All datasets analysed are publicly available and no new data were generated. The California
+Housing dataset is distributed with scikit-learn and archived at StatLib
+(\url{http://lib.stat.cmu.edu/datasets/houses.zip}); King County house sales is at
+\url{https://www.openml.org/d/42731}; Ames Housing is at \url{https://www.openml.org/d/42165}.
+
+\section{Use of generative artificial intelligence}
+The author used a large language model (Anthropic Claude) as an assistive tool for drafting
+and copy-editing prose, for implementing and refactoring the experiment scripts, and for
+generating tables and figures from the result records. The research questions, experimental
+design, interpretation of results and all scientific claims are the author's own. The author
+has reviewed and verified every number, statement and reference, and takes full responsibility
+for the content.
+
+\end{document}

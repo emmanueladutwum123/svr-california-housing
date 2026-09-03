@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{The workflow of Fig.~\ref{fig:pipeline} stated as stages with explicit inputs and outputs. ``Fitted state'' is the information a stage estimates from data; every such stage is re-fitted on the training portion of each fold.}\label{tab:workflow}
+\small
+\begin{tabular}{llll}
+\toprule
+Stage & Input & Output & Fitted state \\
+\midrule
+S1 derived features & raw table $n \times p_0$ & table $n \times (p_0{+}10)$ & none (row-wise) \\
+S2 partition & full table & train / test folds & fold indices \\
+S3 ensemble importance & training fold & score $s_j$ per feature & MI, $|r|$, RF model \\
+S4 selection & scores $s_j$ & index set of size $k$ & selected indices \\
+S5 scaler assignment & training fold & scaler type per feature & $\mathrm{out}_j$, $g_j$ \\
+S6 scaler fitting & training fold, assignment & scaled training matrix & scaler parameters \\
+S7 hyperparameter search & scaled training fold & $(C, \varepsilon, \gamma)$ & inner CV scores \\
+S8 final fit & scaled training fold, $(C,\varepsilon,\gamma)$ & fitted SVR & support vectors, $\alpha$, $b$ \\
+S9 evaluation & held-out fold, fitted pipeline & $R^2$, RMSE, MAE & none \\
+\bottomrule
+\end{tabular}
+\end{table}

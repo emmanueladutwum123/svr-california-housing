@@ -1,0 +1,43 @@
+\begin{table}[htbp]
+\centering
+\caption{Every cell of the $4 \times 2 \times 2 \times 2$ ablation design, ordered by test $R^2$.}\label{tab:ablation-cells}
+\small
+\begin{tabular}{llllrc}
+\toprule
+Scaling & Derived & Selection & Tuning & $p$ & Test $R^2$ \\
+\midrule
+uniform & yes & all & grid & 18 & 0.7807 \\
+uniform & yes & top-$k$ & grid & 12 & 0.7806 \\
+uniform & no & top-$k$ & grid & 6 & 0.7763 \\
+none & no & top-$k$ & grid & 6 & 0.7686 \\
+uniform & yes & top-$k$ & default & 12 & 0.7664 \\
+uniform & no & all & grid & 8 & 0.7645 \\
+uniform & yes & all & default & 18 & 0.7638 \\
+auto & yes & top-$k$ & grid & 12 & 0.7622 \\
+manual & yes & top-$k$ & grid & 12 & 0.7570 \\
+auto & yes & all & grid & 18 & 0.7566 \\
+manual & yes & all & grid & 18 & 0.7510 \\
+auto & yes & top-$k$ & default & 12 & 0.7471 \\
+uniform & no & all & default & 8 & 0.7453 \\
+manual & no & top-$k$ & grid & 6 & 0.7447 \\
+auto & no & top-$k$ & grid & 6 & 0.7447 \\
+manual & yes & top-$k$ & default & 12 & 0.7438 \\
+manual & no & all & grid & 8 & 0.7423 \\
+auto & no & all & grid & 8 & 0.7423 \\
+uniform & no & top-$k$ & default & 6 & 0.7412 \\
+auto & yes & all & default & 18 & 0.7193 \\
+manual & yes & all & default & 18 & 0.7150 \\
+manual & no & all & default & 8 & 0.6925 \\
+auto & no & all & default & 8 & 0.6925 \\
+manual & no & top-$k$ & default & 6 & 0.6896 \\
+auto & no & top-$k$ & default & 6 & 0.6896 \\
+none & yes & top-$k$ & grid & 12 & 0.6804 \\
+none & yes & all & grid & 18 & 0.6466 \\
+none & no & top-$k$ & default & 6 & 0.5660 \\
+none & yes & top-$k$ & default & 12 & 0.5379 \\
+none & yes & all & default & 18 & 0.5151 \\
+none & no & all & grid & 8 & 0.5035 \\
+none & no & all & default & 8 & -0.0277 \\
+\bottomrule
+\end{tabular}
+\end{table}

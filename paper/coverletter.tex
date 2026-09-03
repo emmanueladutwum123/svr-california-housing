@@ -1,0 +1,121 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{parskip}
+\usepackage{xr}
+\externaldocument{build/main}
+
+\input{numbers}
+
+\setlength{\emergencystretch}{2em}
+\pagestyle{empty}
+
+\begin{document}
+
+\noindent
+Emmanuel Adutwum\\
+Soka University of America\\
+Aliso Viejo, California, United States\\
+\texttt{eadutwum@soka.edu}
+
+\vspace{14pt}
+\noindent 3 September 2026
+
+\vspace{14pt}
+\noindent
+Dr Santosh Reddy Addula, Editor\\
+Mr Ramakant Mohite, Assistant Editor\\
+\emph{Discover Artificial Intelligence}\\
+Springer Nature
+
+\vspace{14pt}
+\noindent
+\textbf{Re: Submission ID 6cf4e30e-1a5b-4ad2-99e5-2320f0737507 --- revised manuscript}
+
+\vspace{10pt}
+\noindent Dear Dr Addula and Mr Mohite,
+
+Please find enclosed the revised version of my manuscript, now entitled ``A Controlled
+Reassessment of Support Vector Regression on the California Housing Benchmark with Feature
+Scaling, Feature Selection and Hyperparameter Tuning'', submitted in response to the decision
+of major revision. A point-by-point response to every comment from the Editor and all three
+reviewers accompanies this letter, together with an updated Contribution Information Sheet.
+
+I want to be direct about what changed, because the revision is not cosmetic. Two of the
+central claims of the previous version were wrong, and the reviewers found both.
+
+First, the value of $R^2 \approx 0.60$ that the previous version attributed to the SVR of
+Preethi et al.\ is not their SVR result at all --- it is the score of their linear, ridge and
+polynomial-ridge models. Their SVR-RBF result is approximately \PreethiReportedRtwo{}.
+Reviewer~1 and Reviewer~3 independently observed that an unscaled baseline of $-0.054$ could
+not explain a reported $0.60$, and they were right: the premise was mistaken. Reproducing the
+configuration they describe, over \RepSeeds{} seeds, now yields $R^2 = \RepUnscaledDefault$
+with library defaults and $\RepUnscaledTuned$ when tuned --- values that bracket their actual
+result --- while adding a single standardisation step to the identical pipeline yields
+$\RepScaledTuned$. The causal story the paper tells is now supported by a direct reproduction
+rather than by an assumed correspondence.
+
+Second, the previous version's claim that feature scaling accounted for 95.7\% of the
+improvement was an artefact of evaluating a single ablation ordering. Evaluating all
+\AblNcells{} cells of the four-factor design shows that the apparent contribution of scaling
+varies by \RangeScal{} in $R^2$ depending only on where it is placed in the sequence. The
+order-independent Shapley value is $\ShapScal$. Scaling remains the largest single
+contributor, but the previous percentage is withdrawn.
+
+The revision also reports two results that contradict the earlier framing and that I have
+chosen to report rather than omit. The feature-specific scaling strategy I previously
+presented as the paper's preprocessing advance does \emph{not} outperform plain
+standardisation on this dataset --- it is worse, by a difference that is significant under a
+paired test. And the derived features contribute little once selection and tuning are in
+place. In addition, spatially blocked cross-validation, which Reviewer~1 requested, reveals
+that the optimism of random partitioning on these geographically structured data exceeds
+every pipeline effect measured anywhere in the study. That finding qualifies the headline
+numbers of this literature, including my own, and it is now stated as such.
+
+Beyond these, the revision adds a direct reproduction of the prior configuration, an
+equal-budget comparison in which all \NModels{} models receive identical data and identical
+tuning, corrected confidence intervals with paired significance testing on identical splits
+under the Nadeau--Bengio correction, feature selection repeated inside every fold together
+with fully nested estimates, replication of the workflow on King County and Ames housing
+data, and sensitivity analyses for every hand-chosen constant. The workflow itself is now
+defined explicitly as a staged procedure with a diagram, the methods sections have been
+expanded substantially, the claim of novelty has been withdrawn and replaced with a
+methodological and diagnostic contribution, and the manuscript has been restructured and
+copy-edited throughout.
+
+On the reporting inconsistencies noted by Reviewer~1, I took a structural approach rather
+than a proofreading one. Every experiment now writes a JSON record, and every table, figure
+and in-text number in the manuscript is generated from those records by script. No numerical
+value is typed by hand anywhere in the paper, so the text, the tables and the figures cannot
+diverge.
+
+Following the internal editorial feedback, the Declarations section now addresses ethical
+approval, consent to participate and consent to publish under individual subheadings; the
+data availability statement appears above the References with direct links to every dataset
+and to the code repository; and a dual publication declaration records the arXiv preprint
+(arXiv:2605.08660) and the relationship between it and the present manuscript. As Reviewer~2
+requested and the Editor endorsed, the manuscript now includes a disclosure of my use of a
+large language model as an assistive tool, together with a statement of what remains my own
+responsibility.
+
+I am grateful to the reviewers. The requirement to reproduce the prior configuration directly
+is what uncovered my misreading of the reference value, and the requirement to evaluate the
+full ablation design is what showed that my headline attribution depended on an arbitrary
+ordering. The paper is more modest than it was, and considerably more solid.
+
+The manuscript has not been published elsewhere and is not under consideration by any other
+journal. I have no competing interests to declare. I would be glad to provide any further
+information the Editor or reviewers may require.
+
+\vspace{12pt}
+\noindent Thank you for your consideration.
+
+\vspace{18pt}
+\noindent Sincerely,
+
+\vspace{22pt}
+\noindent Emmanuel Adutwum\\
+Soka University of America
+
+\end{document}

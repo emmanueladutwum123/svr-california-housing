@@ -1,0 +1,130 @@
+{
+  "cells": {
+    "none|raw8|default": {
+      "r2": -0.02769695510593362,
+      "best_params": {},
+      "seconds": 5.9
+    },
+    "none|raw8|tuned": {
+      "r2": 0.5034838711934289,
+      "best_params": {
+        "svr__C": "100",
+        "svr__epsilon": "0.1",
+        "svr__gamma": "scale"
+      },
+      "seconds": 45.4
+    },
+    "none|top12|default": {
+      "r2": 0.5378862590263301,
+      "best_params": {},
+      "seconds": 5.2
+    },
+    "none|top12|tuned": {
+      "r2": 0.680442876013566,
+      "best_params": {
+        "svr__C": "100",
+        "svr__epsilon": "0.5",
+        "svr__gamma": "scale"
+      },
+      "seconds": 60.4
+    },
+    "uniform|raw8|default": {
+      "r2": 0.7453028207877406,
+      "best_params": {},
+      "seconds": 4.5
+    },
+    "uniform|raw8|tuned": {
+      "r2": 0.7645365844502909,
+      "best_params": {
+        "svr__C": "10",
+        "svr__epsilon": "0.1",
+        "svr__gamma": "scale"
+      },
+      "seconds": 72.9
+    },
+    "uniform|top12|default": {
+      "r2": 0.7663858283477889,
+      "best_params": {},
+      "seconds": 4.7
+    },
+    "uniform|top12|tuned": {
+      "r2": 0.7806269762410389,
+      "best_params": {
+        "svr__C": "10",
+        "svr__epsilon": "0.1",
+        "svr__gamma": "0.1"
+      },
+      "seconds": 97.9
+    },
+    "feature_specific|raw8|default": {
+      "r2": 0.6924955597568334,
+      "best_params": {},
+      "seconds": 4.5
+    },
+    "feature_specific|raw8|tuned": {
+      "r2": 0.7407538385605678,
+      "best_params": {
+        "svr__C": "10",
+        "svr__epsilon": "0.1",
+        "svr__gamma": "0.1"
+      },
+      "seconds": 56.4
+    },
+    "feature_specific|top12|default": {
+      "r2": 0.7438430479501081,
+      "best_params": {},
+      "seconds": 4.9
+    },
+    "feature_specific|top12|tuned": {
+      "r2": 0.7570061257657896,
+      "best_params": {
+        "svr__C": "10",
+        "svr__epsilon": "0.1",
+        "svr__gamma": "scale"
+      },
+      "seconds": 80.6
+    }
+  },
+  "paths": {
+    "S->F->T": {
+      "S": 0.7202,
+      "F": 0.0513,
+      "T": 0.0132
+    },
+    "S->T->F": {
+      "S": 0.7202,
+      "T": 0.0483,
+      "F": 0.0163
+    },
+    "F->S->T": {
+      "F": 0.5656,
+      "S": 0.206,
+      "T": 0.0132
+    },
+    "F->T->S": {
+      "F": 0.5656,
+      "T": 0.1426,
+      "S": 0.0766
+    },
+    "T->S->F": {
+      "T": 0.5312,
+      "S": 0.2373,
+      "F": 0.0163
+    },
+    "T->F->S": {
+      "T": 0.5312,
+      "F": 0.177,
+      "S": 0.0766
+    }
+  },
+  "shapley": {
+    "S": 0.3395,
+    "F": 0.232,
+    "T": 0.2133
+  },
+  "components": {
+    "S": "feature-specific scaling vs none",
+    "F": "top-12 engineered set vs 8 raw",
+    "T": "grid-searched vs default hyperparameters"
+  }
+}

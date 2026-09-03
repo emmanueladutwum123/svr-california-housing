@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering
+\caption{Reproduction of the SVR configuration described by Preethi et al. (2025). Eight raw features, RBF kernel, 80/20 split, mean $\pm$ standard deviation over 5 seeds.}\label{tab:reproduction}
+\small
+\begin{tabular}{lccc}
+\toprule
+Configuration & Test $R^2$ & Test MSE & Gap to reported $R^2$ \\
+\midrule
+Unscaled, library defaults & $-0.020 \pm 0.010$ & $1.343$ & $-0.170$ \\
+Unscaled, $C$ and $\varepsilon$ grid-searched & $0.514 \pm 0.010$ & $0.640$ & $+0.364$ \\
+Standardised, library defaults & $0.737 \pm 0.008$ & $0.346$ & $+0.587$ \\
+Standardised, $C$ and $\varepsilon$ grid-searched & $0.766 \pm 0.011$ & $0.309$ & $+0.616$ \\
+\midrule Reported by Preethi et al. & $\approx 0.15$ & $\approx 1.12$ & --- \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize The values attributed to Preethi et al. are read from their Figs.~7 and 8; their paper reports no numerical table. Their stated procedure tunes $C$ and $\varepsilon$ only, leaving $\gamma$ at the library default, and describes no scaling step.\end{flushleft}
+\end{table}

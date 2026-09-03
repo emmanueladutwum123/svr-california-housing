@@ -1,0 +1,28 @@
+\begin{table}[htbp]
+\centering
+\caption{Notation used in Section~\ref{sec:svr}.}\label{tab:notation}
+\small
+\begin{tabular}{ll}
+\toprule
+Symbol & Meaning \\
+\midrule
+$n$, $p$ & number of training observations; number of features \\
+$\mathbf{x}_i \in \mathbb{R}^{p}$, $y_i \in \mathbb{R}$ & $i$-th feature vector and its target value \\
+$\phi(\cdot)$ & map from input space into the kernel feature space $\mathcal{H}$ \\
+$\mathbf{w}$, $b$ & weight vector in $\mathcal{H}$ and intercept of Eq.~\eqref{eq:svr-primal-fn} \\
+$\lVert \mathbf{w} \rVert^{2}$ & squared norm of $\mathbf{w}$; smaller values give a flatter function \\
+$\varepsilon$ & half-width of the insensitive tube; residuals inside it incur no loss \\
+$\xi_i,\ \xi_i^{*}$ & slack variables for violations above and below the tube \\
+$C$ & regularisation constant weighting total slack against flatness \\
+$\alpha_i,\ \alpha_i^{*} \in [0, C]$ & dual coefficients; non-zero values identify support vectors \\
+$K(\cdot,\cdot)$ & kernel function \\
+$\gamma$ & kernel width of the RBF and polynomial kernels \\
+$d$, $r$ & degree and offset of the polynomial kernel \\
+$s_j$ & pooled ensemble importance of feature $j$, Eq.~\eqref{eq:ensemble} \\
+$k$ & number of features retained by Stage S4 \\
+$\mathrm{out}_j$, $g_j$ & outlier fraction and skewness of feature $j$ used by Algorithm~\ref{alg:scaler} \\
+$\varphi_c$ & Shapley value of pipeline component $c$, Eq.~\eqref{eq:shapley} \\
+$J$ & number of resampled splits in the repeated-split analysis \\
+\bottomrule
+\end{tabular}
+\end{table}

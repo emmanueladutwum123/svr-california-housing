@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering
+\caption{The ten derived features constructed in Stage S1, with their definitions. All are row-wise functions of the eight raw inputs and introduce no fitted state. The unit-offset denominators avoid division by values near zero.}\label{tab:derived}
+\small
+\begin{tabular}{lll}
+\toprule
+Feature & Definition & Intended reading \\
+\midrule
+Income\_per\_Room & $\text{MedInc} / (\text{AveRooms} + 1)$ & purchasing power per unit of dwelling size \\
+Room\_Value\_Score & $\text{MedInc} \times \text{AveRooms}$ & interaction of income and dwelling size \\
+Location\_Score & $(\text{Latitude} \times \text{Longitude})/1000$ & coordinate interaction (no geographic unit) \\
+Coastal\_Proximity & $|\text{Latitude} - 34.05|$ & north--south displacement from a southern reference \\
+Bedroom\_Ratio & $\text{AveBedrms} / (\text{AveRooms} + 1)$ & proxy for dwelling type \\
+Population\_Density & $\text{Population} / (\text{AveOccup} + 1)$ & block-group density approximation \\
+Age\_Income\_Interaction & $\text{HouseAge} \times \text{MedInc}$ & separates older affluent from older low-income stock \\
+Modernization\_Score & $\text{MedInc} / (\text{HouseAge} + 1)$ & income relative to housing-stock age \\
+Rooms\_per\_Person & $\text{AveRooms} / (\text{AveOccup} + 1)$ & space per occupant \\
+Income\_Density & $(\text{MedInc} \times \text{Population})/1000$ & aggregate purchasing power of the block group \\
+\bottomrule
+\end{tabular}
+\end{table}

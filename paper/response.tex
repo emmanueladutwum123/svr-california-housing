@@ -1,0 +1,648 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{xr}
+\externaldocument{build/main}
+
+\input{numbers}
+
+\definecolor{revcol}{gray}{0.32}
+\newcommand{\comment}[1]{\par\smallskip{\color{revcol}\itshape #1}\par\smallskip}
+\newcommand{\reply}{\par\noindent\textbf{Response.}\ }
+\newcommand{\pt}[1]{\par\medskip\noindent\textbf{#1}\par}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\setlength{\emergencystretch}{2em}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Response to Reviewers}\\[4pt]
+{\large A Controlled Reassessment of Support Vector Regression on the California\\
+Housing Benchmark with Feature Scaling, Feature Selection and Hyperparameter Tuning}\\[6pt]
+Emmanuel Adutwum \quad$\cdot$\quad Soka University of America \quad$\cdot$\quad \texttt{eadutwum@soka.edu}\\[4pt]
+\emph{Discover Artificial Intelligence} \quad$\cdot$\quad Submission ID 6cf4e30e-1a5b-4ad2-99e5-2320f0737507
+\end{center}
+
+\vspace{4pt}
+\hrule
+\vspace{10pt}
+
+\noindent Dear Dr Addula and Mr Mohite,
+
+Thank you for the decision of major revision, and my thanks to the three reviewers for
+reports that were detailed, technically specific and, in two important places, correct
+about errors I had made. The revision that follows is substantial: the manuscript has been
+rewritten around a new set of experiments, and two of the earlier version's central claims
+are withdrawn rather than defended.
+
+Three changes deserve to be stated at the outset, because they alter the paper's central
+argument rather than merely elaborating it.
+
+\pt{1. The reference value was misread, and the correction removes the paper's central
+inconsistency.}
+Reviewer~1 (point~2) and Reviewer~3 both observed that an unscaled baseline of
+$R^2 = -0.054$ cannot explain a previously reported $R^2$ of $0.60$, and that the earlier
+manuscript never accounted for the gap. They were right, and on re-reading Preethi et al.\
+closely I found the cause: \textbf{$0.60$ is not their SVR result.} It is the score of their
+linear, ridge and polynomial-ridge models. Their SVR-RBF model attains
+$R^2 \approx \PreethiReportedRtwo$ with MSE $\approx \PreethiReportedMSE$, read from their
+Figs.~7 and~8 (their paper reports no numerical table). The earlier version of my manuscript
+attributed the linear family's score to their SVR. That was my error. With the correct value
+in place, the configuration they describe reproduces at $R^2 = \RepUnscaledDefault$ with
+library defaults and $\RepUnscaledTuned$ when $C$ and $\varepsilon$ are tuned --- values that
+bracket $\PreethiReportedRtwo$ --- and no unexplained gap remains. This is
+Section~\ref{sec:the-result} and Section~\ref{sec:res-reproduction} of the revised manuscript.
+
+\pt{2. The proposed feature-specific scaling strategy does not work, and is now reported as
+a negative result.}
+Reproducing the prior study's uniform scaling directly, as the Editor asked in point~1,
+required me to compare it against my own feature-specific assignment on an identical split.
+Uniform standardisation gives $R^2 = \CfgUniformFull$; the hand-assigned feature-specific
+strategy gives $\CfgManualFull$ on the same split with the same features. The strategy I
+presented in the earlier version as the preprocessing advance is therefore
+\emph{worse} than plain standardisation. It is now reported as such, and the workflow's
+scaling stage is described as ``any reasonable scaling'' rather than as a contribution.
+
+\pt{3. The attribution of 95.7\% of the gain to scaling was an artefact of ablation order.}
+Evaluating the full factorial design rather than a single path shows that the apparent
+contribution of scaling ranges over \RangeScal{} in $R^2$ depending only on where it sits in
+the sequence. The single-path figure reported earlier sat near the top of that range. The
+order-independent Shapley value is $\ShapScal$. Scaling remains the largest contributor,
+but the earlier percentage is withdrawn.
+
+I have also added a disclosure of my use of a large language model, as Reviewer~2 requested
+and the Editor endorsed in point~12.
+
+Every point raised by the Editor and all three reviewers is answered below, with the
+location of each change. Reviewer comments are set in \textcolor{revcol}{\itshape grey
+italic}. All numerical values quoted in this letter are generated from the same result
+records that generate the manuscript's tables and figures, so the two documents cannot
+disagree.
+
+\vspace{6pt}
+\hrule
+
+\section{Response to the Editor's twelve points}
+
+\pt{E1. Directly reproduce baseline performance.}
+\comment{The uniform scaling SVR configuration used in previous work should be reproduced
+directly and its performance compared to the authors' feature-wise scaling method.}
+\reply Done, and it produced a negative result that I report. A new experiment
+(Section~\ref{sec:res-reproduction}, Tables~2 and~3) re-runs the configuration described by Preethi et al.\ over
+\RepSeeds{} seeds: eight raw features, RBF kernel, a grid over $C$ and $\varepsilon$ only,
+$\gamma$ at the library default, 80/20 partition. It yields $R^2 = \RepUnscaledDefault$
+untuned and $\RepUnscaledTuned$ tuned, bracketing their reported
+$\PreethiReportedRtwo$. Table~\ref{tab:configurations} then compares uniform standardisation against my
+feature-specific assignment on one identical split across all feature sets and training
+sizes: uniform gives $\CfgUniformFull$, feature-specific gives $\CfgManualFull$. The
+feature-specific strategy loses. This is stated in the abstract, in
+Section~\ref{sec:res-reproduction}, and again in Section~\ref{sec:disc-not} among the withdrawn claims.
+
+\pt{E2. Fair model comparison.}
+\comment{SVR and baseline algorithms should be trained / evaluated with similar quantities
+of data, rather than trained-set sizes that differ by an order of magnitude or more.}
+\reply Corrected. Section~\ref{sec:res-models} (Table~\ref{tab:models}) retrains all \NModels{} models with identical
+features, identical training rows and an identical search budget of 20 randomised iterations
+with three-fold cross-validation, reported at both 3{,}000 rows and the full training set.
+The tuned SVR attains $\SvrRbfSmall$ (rank \SvrRankSmall) at 3{,}000 rows and $\SvrRbfFull$
+(rank \SvrRankFull) on the full set. Section~\ref{sec:res-kernels} (Table~\ref{tab:size}) additionally shows that the exact
+full-data fit takes only $\SizeFullSecs$~s, so the subset restriction had no computational
+justification and has been removed from the main results rather than defended. A Nystr\"om
+approximation is reported for completeness but is not needed at this scale.
+
+\pt{E3. Statistical significance testing.}
+\comment{The confidence interval equation is incorrect. Proper paired statistical tests
+should be performed to compare models.}
+\reply Both parts corrected. The earlier version reported $\bar{r} \pm 1.96 s$, which is a
+normal-approximation prediction interval for a single fold, not a confidence interval for
+the mean. Section~\ref{sec:res-stats} (Table~\ref{tab:statistics}) now reports the interval three ways so the difference is
+explicit: the correct $\bar{r} \pm t_{0.975,J-1}\, s/\sqrt{J}$ gives
+$[\StatSvrCIlo, \StatSvrCIhi]$, the Nadeau--Bengio interval gives
+$[\StatSvrNBlo, \StatSvrNBhi]$, and the earlier expression gives
+$[\StatSvrVOnelo, \StatSvrVOnehi]$. The ten-fold interval of the earlier version moves from
+$[\CvVOnelo, \CvVOnehi]$ to $[\CvCorrlo, \CvCorrhi]$. The argument that the earlier interval
+did not overlap a competing value is withdrawn. For model comparison, all models are now
+evaluated on \StatSplits{} \emph{identical} splits and compared with the Nadeau--Bengio
+corrected resampled $t$-test, since resampled training sets overlap and the ordinary paired
+$t$ is anti-conservative; the uncorrected $t$ and the Wilcoxon signed-rank test are reported
+alongside it (Table~\ref{tab:paired}).
+
+\pt{E4. Ablation study should be improved.}
+\comment{The impact of each stage of the proposed pipeline should be tested more
+rigorously, including the order in which they are applied or alternative methods to several
+pipeline stages.}
+\reply Rebuilt. The ablation is now a four-factor full factorial design --- scaling, derived
+features, selection, tuning --- and \emph{every one} of its \AblNcells{} cells is evaluated
+(Table~\ref{tab:ablation-cells}). Each component receives a Shapley value, which averages over all \AblNorders{}
+orderings and is the unique attribution that is both order-independent and additive. The
+result changed the paper's conclusion: scaling appears to contribute between $\MinScal$ and
+$\MaxScal$ depending on placement, and its order-independent value is $\ShapScal$, not the
+95.7\% previously claimed. Alternative methods at each stage are also swept: three scaling
+strategies, four kernels each tuned over its own hyperparameters (Table~\ref{tab:kernels}), and grid versus
+randomised search at three budgets (Table~\ref{tab:search}).
+
+\pt{E5. Validate predictive inference.}
+\comment{Consider spatial validation of the model, or at minimum holdout feature selection
+within each cross-validation fold to avoid overly optimistic estimates of model
+performance.}
+\reply Both were done, and this produced the most consequential result in the paper.
+Section~\ref{sec:res-validation} (Table~\ref{tab:validation}) crosses two partitioning schemes with two selection schemes. Random
+ten-fold cross-validation gives $\RandomCVmean$; cross-validation over ten spatially
+contiguous blocks, obtained by $k$-means on standardised centroids, gives
+$\SpatialCVmean \pm \SpatialCVsd$. The optimism of random partitioning, $\SpatialOptimism$,
+is larger than every pipeline effect measured anywhere in this study. Feature selection
+repeated inside each fold changes the estimate by $\SelectionOptimism$; the effect is small
+because the selected sets are stable across folds, but it is reported because the earlier
+version could not have known that. Fully nested estimates, with both selection and
+hyperparameter search inside each outer fold, are $\NestedRandom$ (random) and
+$\NestedSpatial$ (spatial). Section~\ref{sec:disc-threats} now states plainly that results of this kind measure
+interpolation within a sampled region, not prediction for an unsampled one.
+
+\pt{E6. Limit claims to dataset and configuration studied.}
+\comment{Given that only one benchmark dataset was used, claims in the discussion should be
+limited to those pertaining to the California Housing dataset and specific configuration
+tested.}
+\reply Done throughout. A new subsection, \emph{Scope of the claims} (Section~\ref{sec:scope}), states
+that all quantitative claims are restricted to the datasets, feature sets, search spaces and
+implementations described in Section~\ref{sec:setup}, and that the necessity of scaling for distance-based
+kernels is long established and not claimed here as a discovery. The title now reads ``A
+Controlled Reassessment \ldots on the California Housing Benchmark''. Section~\ref{sec:disc-not} is devoted
+to what the evidence does \emph{not} support. The abstract closes on the same restriction.
+Every general statement about SVR has been removed or bounded.
+
+\pt{E7. Define proposed workflow.}
+\comment{The overall processing pipeline should be explicitly defined. It may also be
+helpful to include a diagram that illustrates the different stages of the pipeline and what
+data is input and output to each stage.}
+\reply A new Section~\ref{sec:workflow}, \emph{Proposed workflow}, defines the pipeline as nine stages
+(S1--S9) with stated inputs and outputs, \emph{before} any data are analysed. Figure~\ref{fig:pipeline} is a
+new diagram showing each stage and the data flowing between them, with the stages fitted on
+the training fold enclosed in a dashed boundary; Table~\ref{tab:workflow} states the same information
+tabularly. The scaler assignment, previously a hand-made table specific to one dataset, is
+now stated as an algorithm (Algorithm~\ref{alg:scaler}) that assigns a scaler to each feature from
+training-fold statistics alone, so it can be audited and applied elsewhere.
+
+\pt{E8. Definition of methods is lacking.}
+\comment{Much more detail is needed in the description of how models are trained, how
+hyperparameters were optimized, what cross-validation strategy was used, how features were
+engineered and models compared, and how the ablation study was performed.}
+\reply Section~\ref{sec:workflow} now specifies each of these separately: Section~\ref{sec:svr} the SVR formulation
+with every symbol defined; Sections~\ref{sec:derived}--\ref{sec:scaler} feature derivation, ensemble importance and
+selection; Section~\ref{sec:tuning} the scaler rule as pseudocode; Section~\ref{sec:eval-protocol} the search spaces and
+budgets; Section~\ref{sec:ablation-protocol} the evaluation protocol, which distinguishes explicitly between the
+inner cross-validation used for hyperparameter selection and the outer resampling used for
+performance estimation --- the ambiguity Reviewer~2 identified; and Section~\ref{sec:ablation-protocol} the ablation
+protocol. Section~\ref{sec:fixed}, \emph{What is held fixed}, states for each comparison exactly which
+factor varies and which are held constant.
+
+\pt{E9. Claim of novelty should be improved.}
+\comment{Currently the paper suggests that the authors have broadly ``rediscovered'' SVR.
+The authors should avoid making this claim unless a new novel contribution is demonstrated.}
+\reply Withdrawn entirely. Section~\ref{sec:contributions} now opens: ``The contribution of this paper is
+methodological and diagnostic rather than algorithmic. No new learning algorithm is
+proposed.'' Section~\ref{sec:rw-scaling} places the work explicitly within the existing scaling literature
+(Sola and Sevilla; Hsu et al.; Singh and Singh; Fern\'andez-Delgado et al.) and states that
+the paper does not claim that result. What is claimed is narrower and, I hope, defensible: a
+corrected reading of one published result, a direct reproduction of it, an order-independent
+ablation procedure, a corrected evaluation protocol, and two negative results.
+
+\pt{E10. Manuscript language and formatting requires revision.}
+\comment{Figure / table captions, references, math notation, numbering of results all
+require revision. In addition, the overall flow of the manuscript can be improved by
+revising section headings.}
+\reply The manuscript was rewritten rather than patched. Specifically: figure titles
+embedded in images have been removed so the caption is the sole description; all tables are
+referenced by arabic numeral matching their captions, replacing the Roman numerals of the
+earlier version; every reference has been rechecked and DOIs added; all mathematical symbols
+are defined where introduced (Section~\ref{sec:svr}) and collected in a notation table (Table~\ref{tab:notation});
+section headings are now declarative statements of content, and Section~\ref{sec:workflow} (workflow) now
+precedes Section~\ref{sec:setup} (experimental setup) as Reviewer~2 requested. On numerical consistency I
+took a structural approach rather than a proofreading one: \textbf{no number is typed by hand
+anywhere in this manuscript}. Every experiment writes a JSON record; a generator script turns
+those records into every table, every figure and every in-text value. The class of error
+Reviewer~1 identified in point~9 is therefore now impossible rather than merely corrected.
+
+\pt{E11. Use additional datasets.}
+\comment{Test your proposed workflow on additional datasets. Reviewer \#2 particularly felt
+that this would improve the authors' argument that their method does not only work well for
+California Housing.}
+\reply Section~\ref{sec:res-datasets} (Table~\ref{tab:datasets}) applies the workflow unchanged --- same scaler rule, same
+selection rule, same search space, no dataset-specific adjustment --- to King County house
+sales (21{,}613 transactions, 18 numerical predictors) and Ames Housing (1{,}460 sales, 36
+usable numerical predictors). Shapley attributions for scaling are $\DSCaliforniaScal$,
+$\DSKcHouseScal$ and $\DSAmesScal$; for tuning $\DSCaliforniaTune$, $\DSKcHouseTune$ and
+$\DSAmesTune$; for selection $\DSCaliforniaSelect$, $\DSKcHouseSelect$ and $\DSAmesSelect$.
+The \emph{ordering} of the components --- scaling, then tuning, then selection --- is
+reproduced on all three datasets; the magnitudes are not, and I say so. I also state the
+limit of this evidence in Section~\ref{sec:disc-threats}: all three are residential-property datasets, so this
+tests transfer across datasets within a domain, not across domains.
+
+\pt{E12. AI-use statement.}
+\comment{Reviewer \#2 found large portions of the text to be generated by AI. Authors should
+consider adding a statement disclosing use of any LLM.}
+\reply Added as a declaration subsection, \emph{Use of generative artificial intelligence}.
+It discloses that I used a large language model (Anthropic Claude) as an assistive tool for
+drafting and copy-editing prose, for implementing and refactoring the experiment scripts, and
+for generating tables and figures from the result records; and it states that the research
+questions, experimental design, interpretation and all scientific claims are my own, that I
+have reviewed and verified every number, statement and reference, and that no text appears
+that I have not read and checked against the underlying results. Separately, the specific
+symptoms Reviewer~2 identified --- an excessive number of thin subsections, and mismatches
+between figures and captions --- have been fixed by consolidating the subsections and
+regenerating every figure with its caption from the same source.
+
+\section{Response to the internal editorial feedback}
+
+\pt{I1. Declaration section with individual subheadings.}
+\reply The Declarations section now carries \emph{Ethical approval}, \emph{Consent to
+participate} and \emph{Consent to publish} as separate subheadings, each answered
+individually. All three are ``Not applicable'', with the reason stated: the study analyses
+publicly available aggregated datasets and involves no human participants, animal subjects,
+or identifiable personal data.
+
+\pt{I2. Data availability statement in the manuscript above the References.}
+\reply Added above the References, with direct links: the California Housing dataset via
+\texttt{sklearn.datasets.fetch\_california\_housing} and the StatLib archive; King County via
+OpenML \url{https://www.openml.org/d/42731}; Ames via OpenML
+\url{https://www.openml.org/d/42165}. The analysis code, the JSON records of every experiment
+reported, and the scripts that generate every table and figure are at
+\url{https://github.com/emmanueladutwum123/svr-california-housing}.
+
+\pt{I3. Dual publication declaration.}
+\reply Added. An earlier version was deposited as a preprint on arXiv (arXiv:2605.08660);
+no part of the work is published in or under consideration at any other peer-reviewed
+journal. The declaration states that the present manuscript is a substantially revised
+version of that preprint, that the reading of the reference result is corrected, and that the
+experimental content of Sections~\ref{sec:res-reproduction}--\ref{sec:res-kernels} is new.
+
+\section{Response to Reviewer 1}
+
+I am grateful for this report. Points~2 and~9 identified a genuine error in the earlier
+manuscript, and correcting it changed the paper.
+
+\pt{R1.1 Reframe as a controlled reassessment, not a new general finding.}
+\comment{The improvement of SVR performance through feature scaling is a long-established
+result \ldots\ The manuscript should therefore be reframed not as presenting a new general
+finding about SVR, but as a controlled reassessment of the specific result reported by
+Preethi et al.\ (2025).}
+\reply Accepted in full; this is now the frame of the paper, beginning with its title.
+Section~\ref{sec:scope} states that scaling for distance-based kernels is long established and cites
+Sola and Sevilla (1997), Hsu et al.\ (2003) and Singh and Singh (2020) for it; Section~\ref{sec:rw-scaling}
+positions the work within that literature; Section~\ref{sec:disc-not} repeats that the paper establishes
+nothing about SVR in general.
+
+\pt{R1.2 The unscaled baseline cannot explain the previously reported 0.60.}
+\reply You were right, and finding out why changed the paper. The $0.60$ figure is the score
+of their \emph{linear family}; their SVR is $R^2 \approx \PreethiReportedRtwo$. My earlier
+manuscript misattributed it. Section~\ref{sec:res-reproduction} now reproduces their configuration directly, under
+the same 80/20 split over \RepSeeds{} seeds, obtaining $\RepUnscaledDefault$ untuned and
+$\RepUnscaledTuned$ tuned, which bracket their value; and Table~\ref{tab:configurations} gives the direct comparison
+of their uniform scaling ($\CfgUniformFull$) against my feature-specific strategy
+($\CfgManualFull$) on an identical split. Thank you for pressing on this.
+
+\pt{R1.3 SVR trained on 3{,}000 rows against competitors trained on 14{,}448.}
+\reply Corrected; see E2 above. All \NModels{} models now receive identical rows, features
+and search budget (Table~\ref{tab:models}), reported at both sizes. Table~\ref{tab:size} shows the full-data fit costs
+$\SizeFullSecs$~s, so the subset had no justification. Nystr\"om approximation is reported
+but proves unnecessary at this scale.
+
+\pt{R1.4 Paired tests on identical splits rather than a bare confidence interval.}
+\reply Adopted, using both references you gave. Section~\ref{sec:res-stats} evaluates every model on
+\StatSplits{} identical splits and reports paired differences with Nadeau--Bengio (2003)
+corrected intervals and $p$-values, with the uncorrected $t$ and Wilcoxon alongside for
+reference (Dietterich, 1998). Against XGBoost the difference is $\PairXgbDiff$ with corrected
+$p = \PairXgbP$, where the uncorrected test would have given $p = \PairXgbPuncorr$ --- I
+report both precisely because the discrepancy makes your point.
+
+\pt{R1.5 The ablation follows only one sequence.}
+\reply Corrected; see E4. All \AblNcells{} cells of the four-factor design are evaluated and
+attribution is by Shapley value over all \AblNorders{} orderings. The order-dependence you
+anticipated is large: scaling's apparent contribution spans \RangeScal{} in $R^2$. The
+manuscript now states explicitly that single-path increments should be read as upper bounds
+for whichever component was applied first.
+
+\pt{R1.6 Spatially blocked validation.}
+\reply Added, following Roberts et al.\ (2017); see E5. Spatial blocking costs
+$\SpatialOptimism$ in $R^2$ relative to random partitioning --- more than any pipeline effect
+in the paper. Figure~\ref{fig:validation} shows the blocks and the resulting estimates.
+
+\pt{R1.7 Justify the engineered features, the 40/30/30 weights and the top-12 selection.}
+\comment{In particular, Coastal Proximity is based only on latitude difference, while
+Location Score is defined through the product of latitude and longitude \ldots\ preferably
+through sensitivity analysis.}
+\reply Two changes. First, you were right that neither name was defensible, and
+Section~\ref{sec:derived} now says so in the text rather than leaving the labels to imply
+more than they measure. \emph{Coastal proximity}, $|\text{Latitude} - 34.05|$, is stated to
+be a one-dimensional north--south displacement from a reference latitude near the Los Angeles
+coastline --- explicitly \emph{not} a distance to the coast, which would require the
+coastline geometry and both coordinates. \emph{Location score},
+$(\text{Latitude} \times \text{Longitude})/1000$, is stated to be an interaction term between
+the two coordinates with no geographic units, to be read as an unnamed coordinate interaction
+rather than a location measure. Both are retained as \emph{candidate} features whose value is
+decided empirically at Stage~S4 rather than by their names, and the ablation reports how
+little the derived block contributes once selection and tuning are present. Second, Section~\ref{sec:res-sensitivity} (Table~\ref{tab:sensitivity}) sweeps
+every hand-chosen constant: across \WeightN{} weight combinations on the simplex test $R^2$
+varies only between \WeightMin{} and \WeightMax{} (range \WeightRange{}), and the smallest
+overlap between any swept selection and the default top-twelve is \WeightMinOverlap{} of
+twelve; varying $k$ from 4 to 18 moves $R^2$ between \KrangeLo{} and \KrangeHi{}; varying the
+scaler thresholds over nine combinations moves it by \ThreshRange{}. The honest conclusion is
+that these constants are not load-bearing, which I take to be the appropriate justification
+for constants with no theoretical derivation.
+
+\pt{R1.8 Feature selection performed outside the cross-validation folds.}
+\reply Corrected rather than merely acknowledged. Selection is now repeated inside every
+fold, and Table~\ref{tab:validation} reports selection-inside against selection-outside under both partitioning
+schemes; the difference is $\SelectionOptimism$. Fully nested estimates following Varma and
+Simon (2006) are $\NestedRandom$ (random) and $\NestedSpatial$ (spatial). The effect is small
+here because the selected sets are stable across folds --- feature-selection stability is now
+recorded in the result files --- but the earlier version had no way of knowing that, which
+was your point.
+
+\pt{R1.9 Findings rest on a single benchmark; restrict conclusions and moderate broad
+statements throughout the title, abstract, discussion and conclusion.}
+\comment{The findings are based on a single, extensively studied benchmark dataset. Unless
+additional datasets are included, all conclusions should be restricted to the California
+Housing dataset and the specific experimental configuration used. Broad statements regarding
+the general performance of SVR should be moderated throughout the title, abstract, discussion,
+and conclusion.}
+\reply Addressed on both of the paths you offer, since I took the first one as well as the
+second. Additional datasets \emph{are} now included: Section~\ref{sec:res-datasets} applies
+the workflow unchanged to King County house sales and Ames Housing, and reports that the
+ordering of the components is reproduced on both while the magnitudes are not. Independently
+of that, the claims have been moderated in each of the four places you name. The
+\textbf{title} is now ``A Controlled Reassessment \ldots on the California Housing
+Benchmark''. The \textbf{abstract} closes on the sentence ``Conclusions are restricted to the
+datasets and configurations examined here.'' The \textbf{discussion} opens each of its
+supported claims with ``Within the California Housing dataset and the configurations tested
+here'', and Section~\ref{sec:disc-not} states that the paper establishes nothing about SVR in
+general --- only that one published comparison was configured in a way that disadvantaged one
+of the models it compared. The \textbf{conclusion} restates the restriction explicitly. A new
+Section~\ref{sec:scope} states the scope of every quantitative claim before any result is
+presented. I would also note the limit of the new evidence rather than overstate it: all
+three datasets are residential-property datasets, so Section~\ref{sec:res-datasets} tests
+transfer within a domain, not across domains, and Section~\ref{sec:disc-threats} says so.
+
+\pt{R1.10 Numerical and reporting inconsistencies throughout.}
+\reply Every number in the manuscript has been recalculated from scratch, and the class of
+error has been eliminated structurally: each experiment writes a JSON record and a generator
+produces every table, figure and in-text value from those records, so no value is typed by
+hand and the text, tables and figures cannot diverge. Rounding is standardised to four
+decimal places for $R^2$ and to the reported precision elsewhere. The monetary conversions
+you flagged have been removed rather than corrected, since with the target capped at
+\$500{,}001 they were more misleading than informative. Mean and median are now labelled
+distinctly wherever both appear. Figure and table numbering is generated automatically.
+
+\section{Response to Reviewer 2}
+
+This report identified the two structural weaknesses I found hardest to answer --- that the
+pipeline was never actually formalised, and that the manuscript showed signs of
+over-generated text. Both are addressed directly.
+
+\pt{R2.0 (general remark) Figures 3--6 are unnecessary for a well-known dataset, or at
+least not at their current size.}
+\reply Agreed and acted on: the exploratory figures of the earlier version --- the
+distribution and correlation displays that occupied Figures 3--6 --- have been removed from
+the manuscript entirely rather than merely reduced. The dataset is, as you say, thoroughly
+documented elsewhere, and Section~\ref{sec:datasets} now conveys the two facts that actually
+matter for this paper's argument in a sentence of text: the feature ranges that motivate the
+scaling stage, and the census recording cap at \$500{,}001 that bounds achievable fit. Every
+figure that remains reports a result rather than describing the data.
+
+\subsection*{Major issues}
+
+\pt{R2.1 The contribution is weak; the pipeline is explained vaguely and should be
+formalised with a diagram.}
+\reply Accepted. Section~\ref{sec:contributions} now states plainly that no new learning algorithm is proposed
+and that the contribution is methodological and diagnostic. The pipeline is formalised in a
+new Section~\ref{sec:workflow} as stages S1--S9 with defined inputs and outputs, with Figure~\ref{fig:pipeline} as the diagram
+you suggested and Table~\ref{tab:workflow} as its tabular statement, and the scaler assignment promoted from a
+hand-made table to an auditable algorithm (Algorithm~\ref{alg:scaler}). I would add that the revision now
+also offers a methodological contribution that the earlier version did not: the
+order-independent Shapley attribution for preprocessing ablations (Section~\ref{sec:ablation-protocol}), which is
+what revealed that the earlier 95.7\% figure was an artefact.
+
+\pt{R2.2 Why compare only against Preethi et al.? Why only four references in Section~\ref{sec:rw-benchmark}?}
+\reply Section~\ref{sec:related} has been expanded and restructured into three subsections --- scaling in
+kernel methods, the California Housing benchmark, and model comparison and attribution ---
+with the benchmarking literature discussed in terms of settings and reported performance
+rather than merely listed. Preethi et al.\ remain the specific object of the reassessment,
+because a controlled reproduction requires a specific configuration to reproduce, but they
+are no longer the only point of comparison: Section~\ref{sec:res-models} places the tuned SVR against
+\NModels{} models under equal conditions, and the finding that gradient-boosted trees lead on
+this benchmark is connected to the broader literature in Section~\ref{sec:rw-benchmark}.
+
+\pt{R2.3 Disclose LLM use.}
+\reply Disclosed in full; see E12. I have also acted on the symptoms you identified rather
+than only on the disclosure: the thin subsections have been consolidated, and every figure is
+now regenerated from the result records together with its caption, which removes the
+figure/caption mismatches.
+
+\pt{R2.4 The training procedure is unclear --- 3-fold HPO, then 10-fold evaluation on what
+data?}
+\reply This was genuinely ambiguous in the earlier version, and I have separated the two
+loops explicitly. Section~\ref{sec:ablation-protocol} now states that hyperparameter selection uses an inner
+$k$-fold cross-validation \emph{on the training portion only}, and that performance is
+estimated by an outer resampling scheme over held-out data that the inner loop never sees;
+Section~\ref{sec:ablation-protocol} states which is used for each reported quantity. Where both selection and
+hyperparameter search occur inside the outer folds, the estimate is labelled ``nested''
+(Table~\ref{tab:validation}).
+
+\pt{R2.5 Section 3 should follow Section 4 (previous version).}
+\reply Done: the proposed workflow (now Section~\ref{sec:workflow}) precedes the experimental setup (now
+Section~\ref{sec:setup}), so the proposal is stated before the data used to evaluate it.
+
+\pt{R2.6 What is the regression equation mentioned on Page 7?}
+\reply That sentence referred to nothing defined in the manuscript and has been removed. The
+SVR decision function is now given once, in Section~\ref{sec:svr}, with every symbol defined.
+
+\pt{R2.7 Figure titles duplicate captions; Figure~9's title and caption disagree; figures
+referenced by title appear unreferenced.}
+\reply All embedded figure titles have been removed, so the caption is the sole description.
+Every figure is regenerated from its result record, and each is referenced in the text by
+its \LaTeX\ label rather than by title, so the reference, the caption and the content are
+guaranteed to correspond.
+
+\pt{R2.8 Table captions use arabic numerals but the text uses Roman; format is not Springer
+Nature style.}
+\reply Corrected: all tables are numbered and referenced with arabic numerals in Springer
+Nature style, using the \texttt{sn-jnl} class throughout.
+
+\pt{R2.9 References use an incorrect format; academic papers should have DOIs.}
+\reply The bibliography has been rebuilt in \texttt{sn-mathphys-num} style, and every one
+of the 29 references now resolves to a persistent link. Twenty-one carry a DOI, including two
+that were missing and have been added (Vapnik's monograph,
+\texttt{10.1007/978-1-4757-2440-0}, and Shapley's 1953 chapter,
+\texttt{10.1515/9781400881970-018}). The remaining eight have no DOI because their venues do
+not register them --- five are \emph{Journal of Machine Learning Research} articles, two are
+NeurIPS proceedings papers, and one is a technical report --- so each of those now carries the
+publisher's stable URL instead, verified to resolve to the correct paper. No reference is now
+without either a DOI or a permanent link.
+
+\pt{R2.10 Section 4.1.2 is not self-contained --- define $n$, $\phi$, $b$, $\mathbf{w}$,
+$\gamma$, $\alpha$, $y$, $\mathbf{x}$, $\|\mathbf{w}\|^2$.}
+\reply Agreed --- a paper explicitly about SVR should not omit its formulation.
+Section~\ref{sec:svr} now gives the primal objective, the $\varepsilon$-insensitive loss, the dual and
+the kernel expansion, with every symbol you list defined at first use, and Table~\ref{tab:notation} collects
+the full notation.
+
+\pt{R2.11 Table 3 placement; Section 4.2.2 should precede 4.2.1; results in Section 4 belong
+in Results.}
+\reply Section~\ref{sec:setup} has been restructured as you describe. The derived features are now listed
+before the table that summarises them; the ordering of the two subsections is reversed; and
+every empirical value that appeared in the old Section~\ref{sec:setup} has been moved into Section~\ref{sec:results}, so
+Section~\ref{sec:setup} states the setup and reports no results.
+
+\pt{R2.12 Hyperparameter tuning: why discretise $C$ and $\varepsilon$ for a randomised
+search? Why not a grid? Why tune only the RBF kernel? Why only 20 iterations if the search
+takes 9 seconds? Table~\ref{tab:statistics} is unnecessary.}
+\reply Every part of this was a fair criticism and all are now addressed empirically rather
+than argued. $C$, $\varepsilon$ and $\gamma$ are now drawn from continuous log-uniform
+distributions, so the randomised search is a genuine randomised search. Section~\ref{sec:res-kernels}
+(Table~\ref{tab:search}) reports the exhaustive grid alongside randomised search at three budgets: the
+\GridFits{}-fit grid reaches $\GridRtwo$ in $\GridSecs$~s, against $\RandTwentyRtwo$ at 20
+iterations and $\RandTwoHundredRtwo$ at 200. Since the search costs seconds, the larger
+budget is used throughout the revision and the small-budget limitation is removed rather than
+defended. Every kernel is now tuned over its own hyperparameters, not only the RBF
+(Table~\ref{tab:kernels}). The previous version's Table 5 has been deleted and its content folded into the text.
+
+\pt{R2.13 Why is stratification needed in a regression problem?}
+\reply It is not needed, and the manuscript now says so explicitly rather than implying
+otherwise. Section~\ref{sec:eval-protocol} states that stratification is not required in
+regression and that the deciles are used for one narrow purpose: to remove a source of
+variation between configurations that are being compared against each other, so that a
+difference between two cells reflects the configuration rather than a difference in the
+target distribution of their partitions. Nothing in the paper's conclusions rests on it ---
+the repeated-split analysis of Section~\ref{sec:res-stats}, which is where every significance
+claim is made, draws fresh unstratified partitions, and the spatially blocked design of
+Section~\ref{sec:res-validation} is the deliberate alternative where dependence between
+observations genuinely matters. I have kept the device and justified it rather than removing
+it, since removing it would add noise to the ablation comparisons without changing any
+conclusion; I am happy to drop it entirely if you would prefer.
+
+\pt{R2.14 Were the other algorithms also tuned? Did they use the same pipeline?}
+\reply They are now, and they do. Section~\ref{sec:res-models} gives every model the same twelve features,
+the same training rows, the same scaling stage and the same search budget of 20 randomised
+iterations with three-fold cross-validation. Section~\ref{sec:fixed} states this explicitly. In the
+earlier version the comparison models were used at their defaults, which --- as you imply ---
+made the ranking claim uninterpretable.
+
+\pt{R2.15 The ablation needs detail: did you start from Preethi et al.'s setting and add
+components progressively? Was anything held fixed?}
+\reply The design is now stated in full in Section~\ref{sec:ablation-protocol}, and it no longer proceeds by a single
+progressive path. The baseline cell is the configuration described by Preethi et al.\ (no
+scaling, raw features, defaults), at $R^2 = \AblBaseline$; from there all \AblNcells{} cells
+of the four-factor design are evaluated, so no component's contribution depends on what was
+held fixed while it was introduced. The best cell is \AblBestCell{} at $\AblBestRtwo$.
+
+\pt{R2.16 Section 7.1 repeats earlier results; consider merging Sections 6 and 7.}
+\reply The Discussion has been rewritten as three subsections that make claims rather than
+restate numbers --- what the evidence supports, what it does not support, and threats to
+validity --- with no repetition of the Results tables.
+
+\pt{R2.17 If the search takes 9 seconds, the stated limitations do not hold --- why sample
+3{,}000 instances, and why not increase the HPO budget? LIBSVM's complexity is not a reason
+for a less ambitious setting.}
+\reply You were right and I have not defended any of it. The 3{,}000-row subset is removed
+from the main results (Table~\ref{tab:size} shows the full fit takes $\SizeFullSecs$~s), the search
+budget is increased and justified empirically (Table~\ref{tab:search}), and the LIBSVM-complexity argument
+has been deleted from the limitations. What remains in Section~\ref{sec:disc-threats} are limitations I can
+actually defend: the spatial optimism, the census cap at \$500{,}001, the 1990 vintage of the
+data, the within-domain nature of the additional datasets, and the reading error of roughly
+$\pm 0.02$ in the values taken from Preethi et al.'s figures.
+
+\subsection*{Minor issues}
+
+\pt{R2.18 Add a reference for the hedonic pricing model (Section 1.1).}
+\reply Added: Rosen (1974), with Limsombunchai (2004), Fan et al.\ (2006) and Park and Bae
+(2015) for the machine-learning alternative.
+
+\pt{R2.19 Add references for the California Housing dataset.}
+\reply Added: Pace and Barry (1997) for the dataset's introduction and Pedregosa et al.\
+(2011) for its scikit-learn distribution.
+
+\pt{R2.20 Section 1.4's second sentence is confusing --- 10 new features but top 12 used ---
+and contradicts the experiments.}
+\reply The confusion was real: ten features are \emph{derived}, giving eighteen candidates
+alongside the eight raw features, from which twelve are selected. The earlier phrasing
+implied twelve were selected from ten. Section~\ref{sec:contributions} and Section~\ref{sec:derived} now state the counts
+explicitly at each stage, and Figure~\ref{fig:pipeline} shows the dimensionality at each transition.
+
+\pt{R2.21 Section 2.3's title should reflect its content.}
+\reply Section~\ref{sec:related} has been restructured into three subsections with titles that state their
+content: \emph{Feature scaling in kernel methods}, \emph{The California Housing benchmark},
+and \emph{Comparing models and attributing gains}.
+
+\pt{R2.22 Table 1 is unnecessary (previous version).}
+\reply Deleted, with the small amount of information it carried folded into the text.
+
+\pt{R2.23 Section 3.2 repeats ``characteristics'' in one sentence.}
+\reply Rewritten.
+
+\pt{R2.24 How can ``wide residual spread'' be observed in the caption of Figure~7?}
+\reply It could not be, from that figure. The caption is rewritten to describe only what the
+panels show --- residuals centred near zero with dispersion increasing at higher predicted
+values, and the vertical band of true values at 5.0 produced by the census recording cap.
+
+\section{Response to Reviewer 3}
+
+Thank you for the recommendation of minor revision and for a report that identified the same
+central problem as Reviewer~1 while also being precise about where the caveats belonged.
+
+\pt{R3.1 The central comparison does not hold together: Stage~A yields $-0.054$ against
+Preethi et al.'s $\approx 0.60$, and the gap is never explained.}
+\reply This was the most important observation in the three reports, and pursuing it changed
+the paper. The gap could not be explained because the premise was wrong: $0.60$ is the score
+of their linear family, and their SVR is $\approx \PreethiReportedRtwo$. Rather than either
+of the two options you offered, I have taken the third: the misreading is corrected and
+stated openly (Sections~1.2 and~5.1), their configuration is reproduced directly, and the
+reproduced values $\RepUnscaledDefault$ and $\RepUnscaledTuned$ bracket their actual result.
+The ``explains the prior result'' language is now supported by a direct reproduction rather
+than by an assumed correspondence.
+
+\pt{R3.2 The training-set-size caveat must accompany the ranking claim wherever it appears,
+not only in Limitations.}
+\reply Rendered unnecessary rather than relocated: all \NModels{} models are now trained on
+identical data (Section~\ref{sec:res-models}), so the ranking no longer carries an asymmetry that needs a
+caveat. Both training sizes are reported, and the ranking is stated with its training size
+attached in the abstract, in Section~\ref{sec:res-models} and in the conclusion.
+
+\pt{R3.3 The Introduction asserts ``this does not restrict SVR as a learning algorithm''
+before any evidence is presented.}
+\reply Removed and replaced by the question being tested. Section~\ref{sec:questions} now poses four
+research questions (Q1--Q4), each cross-referenced to the section that answers it, so the
+Introduction states what is asked rather than what will be concluded.
+
+\pt{R3.4 The claim that full-dataset training ``would be expected to yield lower RMSE'' is
+untested.}
+\reply It is now tested rather than asserted. Table~\ref{tab:size} fits the same tuned configuration at
+three training sizes; RMSE falls from $\SizeThreeKrmse$ at 3{,}000 rows to $\SizeFullRmse$ on
+the full training set, so the direction of the earlier claim is confirmed --- but it is now
+a measurement.
+
+\pt{R3.5 Soften ``confirms'' to ``supports'' or ``is consistent with''.}
+\reply Done throughout. ``Confirms'' now appears only where a specific prediction was tested
+directly and the outcome was as predicted, as in R3.4 above.
+
+\vspace{10pt}
+\hrule
+\vspace{8pt}
+
+\noindent I am grateful for the care evident in all three reports. The requirement to
+reproduce the prior configuration directly is what uncovered my misreading of the reference
+value, and the requirement to evaluate the full ablation design is what showed that my
+headline attribution was an artefact of ordering. The paper is more modest than it was and, I
+believe, considerably more solid.
+
+\vspace{10pt}
+\noindent Yours sincerely,\\[10pt]
+Emmanuel Adutwum\\
+Soka University of America\\
+\texttt{eadutwum@soka.edu}
+
+\end{document}

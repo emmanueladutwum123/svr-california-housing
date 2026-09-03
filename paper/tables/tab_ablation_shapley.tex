@@ -1,0 +1,24 @@
+\begin{table}[htbp]
+\centering
+\caption{Order-independent attribution. The Shapley value averages a component's marginal effect over all 24 orderings; the minimum and maximum columns are the same component's apparent contribution under the most and least favourable ordering.}\label{tab:ablation-shapley}
+\small
+\begin{tabular}{llcccc}
+\toprule
+Scaling used as ``on'' & Component & Shapley & Min increment & Max increment & Range \\
+\midrule
+uniform & Scaling & $+0.3062$ & $+0.0077$ & $+0.7730$ & $0.7653$ \\
+uniform & Derived features & $+0.1440$ & $-0.0881$ & $+0.5428$ & $0.6309$ \\
+uniform & Feature selection & $+0.1761$ & $-0.0041$ & $+0.5937$ & $0.5978$ \\
+uniform & Hyperparameter tuning & $+0.1820$ & $+0.0142$ & $+0.5312$ & $0.5170$ \\
+manual & Scaling & $+0.2699$ & $-0.0239$ & $+0.7202$ & $0.7441$ \\
+manual & Derived features & $+0.1481$ & $-0.0881$ & $+0.5428$ & $0.6309$ \\
+manual & Feature selection & $+0.1791$ & $-0.0029$ & $+0.5937$ & $0.5966$ \\
+manual & Hyperparameter tuning & $+0.1875$ & $+0.0132$ & $+0.5312$ & $0.5180$ \\
+auto & Scaling & $+0.2723$ & $-0.0239$ & $+0.7202$ & $0.7441$ \\
+auto & Derived features & $+0.1505$ & $-0.0881$ & $+0.5428$ & $0.6309$ \\
+auto & Feature selection & $+0.1789$ & $-0.0029$ & $+0.5937$ & $0.5966$ \\
+auto & Hyperparameter tuning & $+0.1882$ & $+0.0152$ & $+0.5312$ & $0.5160$ \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize v1 reported a single ordering (scaling $\to$ features $\to$ tuning) and read its increments as independent contributions; the Range column is the size of the error that assumption introduces.\end{flushleft}
+\end{table}

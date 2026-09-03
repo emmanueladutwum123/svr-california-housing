@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering
+\caption{Scaling strategy, feature set and training size evaluated on one identical split. Rows A use the eight raw features, rows P and F likewise; rows U and S use the twelve selected features.}\label{tab:configurations}
+\small
+\begin{tabular}{llrrcc}
+\toprule
+ID & Scaling & $n_{\text{train}}$ & $p$ & Test $R^2$ & Test RMSE \\
+\midrule
+A0 & none & 3000 & 8 & -0.0538 & 1.1814 \\
+A1 & none & 14448 & 8 & -0.0277 & 1.1667 \\
+P0 & uniform (standardise all) & 3000 & 8 & 0.7423 & 0.5842 \\
+P1 & uniform (standardise all) & 14448 & 8 & 0.7453 & 0.5808 \\
+F0 & feature-specific (v1 table) & 3000 & 8 & 0.6901 & 0.6406 \\
+F1 & feature-specific (v1 table) & 14448 & 8 & 0.6925 & 0.6382 \\
+U0 & uniform (standardise all) & 3000 & 12 & 0.7414 & 0.5853 \\
+U1 & uniform (standardise all) & 14448 & 12 & 0.7664 & 0.5563 \\
+S0 & feature-specific (v1 table) & 3000 & 12 & 0.7155 & 0.6139 \\
+S1 & feature-specific (v1 table) & 14448 & 12 & 0.7438 & 0.5825 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize Uniform standardisation (P1, $R^2$ shown) outperforms the feature-specific assignment (F1) on identical data, which is the comparison requested in editorial point~1.\end{flushleft}
+\end{table}

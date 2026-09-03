@@ -1,0 +1,23 @@
+\begin{table}[htbp]
+\centering
+\caption{Ten-model comparison in which every model receives the same twelve features, the same training rows and the same tuning budget (20 randomised search iterations, three-fold cross-validation). Ranking follows the full-training-set column.}\label{tab:models}
+\small
+\begin{tabular}{rlcccc}
+\toprule
+Rank & Model & \multicolumn{2}{c}{$n = 3000$} & \multicolumn{2}{c}{$n = 14448$} \\
+ & & $R^2$ & RMSE & $R^2$ & RMSE \\
+\midrule
+1 & XGBoost & 0.8057 & 0.5073 & 0.8483 & 0.4482 \\
+2 & Gradient Boosting & 0.8055 & 0.5076 & 0.8384 & 0.4626 \\
+3 & Random Forest & 0.7610 & 0.5626 & 0.8171 & 0.4922 \\
+4 & \textbf{SVR-RBF} & 0.7501 & 0.5753 & 0.7702 & 0.5517 \\
+5 & K-Nearest Neighbours & 0.7179 & 0.6113 & 0.7599 & 0.5639 \\
+6 & Decision Tree & 0.6533 & 0.6777 & 0.7214 & 0.6075 \\
+7 & Lasso Regression & 0.6497 & 0.6812 & 0.6505 & 0.6804 \\
+8 & Ridge Regression & 0.6497 & 0.6811 & 0.6504 & 0.6805 \\
+9 & Linear Regression & 0.6497 & 0.6812 & 0.6504 & 0.6805 \\
+10 & SVR-Linear & 0.6435 & 0.6872 & 0.6469 & 0.6839 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize In v1 the SVR row was fitted to 3{,}000 rows while the other nine models were fitted to 14{,}448; both training sizes are shown here so the effect of that asymmetry is visible rather than implicit.\end{flushleft}
+\end{table}

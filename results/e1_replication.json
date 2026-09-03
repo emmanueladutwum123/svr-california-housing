@@ -1,0 +1,102 @@
+[
+  {
+    "config": "A0  unscaled, 8 raw, default SVR (manuscript Stage A)",
+    "n_train": 3000,
+    "n_features": 8,
+    "scaling": "none",
+    "r2": -0.05377095719528047,
+    "rmse": 1.1814020569994301,
+    "mae": 0.8797387257906688,
+    "fit_seconds": 1.4
+  },
+  {
+    "config": "A1  unscaled, 8 raw, default SVR, full train",
+    "n_train": 14448,
+    "n_features": 8,
+    "scaling": "none",
+    "r2": -0.027733639505094665,
+    "rmse": 1.16671530835413,
+    "mae": 0.8699037374013714,
+    "fit_seconds": 10.2
+  },
+  {
+    "config": "P0  UNIFORM scaling, 8 raw, default SVR (Preethi config)",
+    "n_train": 3000,
+    "n_features": 8,
+    "scaling": "uniform",
+    "r2": 0.7423331711517187,
+    "rmse": 0.5841896609680143,
+    "mae": 0.39685865854795843,
+    "fit_seconds": 1.1
+  },
+  {
+    "config": "P1  UNIFORM scaling, 8 raw, default SVR, full train",
+    "n_train": 14448,
+    "n_features": 8,
+    "scaling": "uniform",
+    "r2": 0.7453039227181152,
+    "rmse": 0.5808122109392715,
+    "mae": 0.38673658130586075,
+    "fit_seconds": 8.8
+  },
+  {
+    "config": "F0  feature-specific scaling, 8 raw, default SVR",
+    "n_train": 3000,
+    "n_features": 8,
+    "scaling": "feature_specific",
+    "r2": 0.6901300315242456,
+    "rmse": 0.6406404466249161,
+    "mae": 0.4474575384166968,
+    "fit_seconds": 1.2
+  },
+  {
+    "config": "F1  feature-specific scaling, 8 raw, default, full",
+    "n_train": 14448,
+    "n_features": 8,
+    "scaling": "feature_specific",
+    "r2": 0.6924929247598597,
+    "rmse": 0.6381931913783708,
+    "mae": 0.4462852386198643,
+    "fit_seconds": 9.0
+  },
+  {
+    "config": "U0  UNIFORM scaling, top-12, default SVR",
+    "n_train": 3000,
+    "n_features": 12,
+    "scaling": "uniform",
+    "r2": 0.7413941100537228,
+    "rmse": 0.5852532260081931,
+    "mae": 0.39324233329267916,
+    "fit_seconds": 1.0
+  },
+  {
+    "config": "U1  UNIFORM scaling, top-12, default, full train",
+    "n_train": 14448,
+    "n_features": 12,
+    "scaling": "uniform",
+    "r2": 0.7663759219413163,
+    "rmse": 0.5562671459172183,
+    "mae": 0.367798412512358,
+    "fit_seconds": 8.5
+  },
+  {
+    "config": "S0  feature-specific, top-12, default SVR (Stage C)",
+    "n_train": 3000,
+    "n_features": 12,
+    "scaling": "feature_specific",
+    "r2": 0.7154771940159997,
+    "rmse": 0.6138795297986587,
+    "mae": 0.4248439986180893,
+    "fit_seconds": 1.1
+  },
+  {
+    "config": "S1  feature-specific, top-12, default, full train",
+    "n_train": 14448,
+    "n_features": 12,
+    "scaling": "feature_specific",
+    "r2": 0.7438430479501122,
+    "rmse": 0.5824755280604638,
+    "mae": 0.39554761099545105,
+    "fit_seconds": 8.6
+  }
+]

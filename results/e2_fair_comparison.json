@@ -1,0 +1,216 @@
+{
+  "n=3000": {
+    "SVR-RBF": {
+      "r2": 0.7501239680049312,
+      "rmse": 0.5752901135106235,
+      "mae": 0.38536419992690724,
+      "best_params": {
+        "m__C": 20.12196163610286,
+        "m__epsilon": 0.0420167205437253,
+        "m__gamma": 0.03632486956676605
+      },
+      "seconds": 6.0
+    },
+    "SVR-Linear": {
+      "r2": 0.6434579375257746,
+      "rmse": 0.6871950087429926,
+      "mae": 0.48043420832328554,
+      "best_params": {
+        "m__C": 0.6672367170464207,
+        "m__epsilon": 0.3718364180573207
+      },
+      "seconds": 5.6
+    },
+    "K-Nearest Neighbours": {
+      "r2": 0.7178804838786861,
+      "rmse": 0.6112813916528407,
+      "mae": 0.42035131475790966,
+      "best_params": {
+        "m__n_neighbors": 17.0,
+        "m__p": 1.0,
+        "m__weights": "distance"
+      },
+      "seconds": 0.5
+    },
+    "Ridge Regression": {
+      "r2": 0.6497075237565367,
+      "rmse": 0.681145693183885,
+      "mae": 0.4884336576906826,
+      "best_params": {
+        "m__alpha": 0.028585493941961918
+      },
+      "seconds": 0.1
+    },
+    "Lasso Regression": {
+      "r2": 0.6496995247465969,
+      "rmse": 0.6811534701994302,
+      "mae": 0.48846224189405385,
+      "best_params": {
+        "m__alpha": 1.2674255898937214e-05
+      },
+      "seconds": 0.9
+    },
+    "Linear Regression": {
+      "r2": 0.6496639365003585,
+      "rmse": 0.6811880696982661,
+      "mae": 0.488454451831306,
+      "best_params": {},
+      "seconds": 0.0
+    },
+    "Decision Tree": {
+      "r2": 0.6532642195059,
+      "rmse": 0.6776788631549734,
+      "mae": 0.46836967266251706,
+      "best_params": {
+        "m__max_depth": 29.0,
+        "m__max_features": 0.6,
+        "m__min_samples_leaf": 28.0
+      },
+      "seconds": 0.3
+    },
+    "Random Forest": {
+      "r2": 0.7610369009620689,
+      "rmse": 0.5625874387724088,
+      "mae": 0.38511631442815547,
+      "best_params": {
+        "m__max_depth": 14.0,
+        "m__max_features": 0.5,
+        "m__min_samples_leaf": 2.0,
+        "m__n_estimators": 417.0
+      },
+      "seconds": 24.9
+    },
+    "Gradient Boosting": {
+      "r2": 0.8055018053484648,
+      "rmse": 0.5075541668214328,
+      "mae": 0.3422499154262591,
+      "best_params": {
+        "m__learning_rate": 0.05958389350068958,
+        "m__max_depth": 5.0,
+        "m__n_estimators": 444.0,
+        "m__subsample": 0.7
+      },
+      "seconds": 18.4
+    },
+    "XGBoost": {
+      "r2": 0.8056691510163332,
+      "rmse": 0.5073357707871514,
+      "mae": 0.34291778365272735,
+      "best_params": {
+        "m__colsample_bytree": 0.85,
+        "m__learning_rate": 0.037094276752507684,
+        "m__max_depth": 4.0,
+        "m__n_estimators": 764.0,
+        "m__subsample": 0.85
+      },
+      "seconds": 13.8
+    }
+  },
+  "n=14448": {
+    "SVR-RBF": {
+      "r2": 0.770170746101705,
+      "rmse": 0.5517308444902981,
+      "mae": 0.36262136973572867,
+      "best_params": {
+        "m__C": 3.1763269920199058,
+        "m__epsilon": 0.038234752246751866,
+        "m__gamma": 0.06847920095574778
+      },
+      "seconds": 67.5
+    },
+    "SVR-Linear": {
+      "r2": 0.6468899137976495,
+      "rmse": 0.6838796357329755,
+      "mae": 0.4803328792613566,
+      "best_params": {
+        "m__C": 0.6672367170464207,
+        "m__epsilon": 0.3718364180573207
+      },
+      "seconds": 82.3
+    },
+    "K-Nearest Neighbours": {
+      "r2": 0.7599310456730742,
+      "rmse": 0.563887685932825,
+      "mae": 0.3786375629827894,
+      "best_params": {
+        "m__n_neighbors": 17.0,
+        "m__p": 1.0,
+        "m__weights": "distance"
+      },
+      "seconds": 3.9
+    },
+    "Ridge Regression": {
+      "r2": 0.6504033537262929,
+      "rmse": 0.680468834236463,
+      "mae": 0.49157477168562597,
+      "best_params": {
+        "m__alpha": 0.028585493941961918
+      },
+      "seconds": 0.3
+    },
+    "Lasso Regression": {
+      "r2": 0.650494533136694,
+      "rmse": 0.6803800908320098,
+      "mae": 0.49163746933433816,
+      "best_params": {
+        "m__alpha": 1.2674255898937214e-05
+      },
+      "seconds": 2.7
+    },
+    "Linear Regression": {
+      "r2": 0.6503738885370248,
+      "rmse": 0.680497509741148,
+      "mae": 0.49158146823257864,
+      "best_params": {},
+      "seconds": 0.0
+    },
+    "Decision Tree": {
+      "r2": 0.7213573339063296,
+      "rmse": 0.6075029884665392,
+      "mae": 0.4006192439175414,
+      "best_params": {
+        "m__max_depth": 25.0,
+        "m__max_features": 0.6,
+        "m__min_samples_leaf": 11.0
+      },
+      "seconds": 0.9
+    },
+    "Random Forest": {
+      "r2": 0.8170715596823668,
+      "rmse": 0.4922267662354439,
+      "mae": 0.32552156318040737,
+      "best_params": {
+        "m__max_depth": 14.0,
+        "m__max_features": 0.5,
+        "m__min_samples_leaf": 2.0,
+        "m__n_estimators": 417.0
+      },
+      "seconds": 245.9
+    },
+    "Gradient Boosting": {
+      "r2": 0.8384437625495818,
+      "rmse": 0.46257959902419554,
+      "mae": 0.30565840080092044,
+      "best_params": {
+        "m__learning_rate": 0.05958389350068958,
+        "m__max_depth": 5.0,
+        "m__n_estimators": 444.0,
+        "m__subsample": 0.7
+      },
+      "seconds": 213.9
+    },
+    "XGBoost": {
+      "r2": 0.848305933187832,
+      "rmse": 0.4482382434585682,
+      "mae": 0.2928407487128394,
+      "best_params": {
+        "m__colsample_bytree": 1.0,
+        "m__learning_rate": 0.08192776699882925,
+        "m__max_depth": 6.0,
+        "m__n_estimators": 766.0,
+        "m__subsample": 0.7
+      },
+      "seconds": 263.2
+    }
+  }
+}
