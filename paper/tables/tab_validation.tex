@@ -1,1 +1,18 @@
-\begin{table}[htbp]\centering\caption{tab validation --- pending, experiment still running.}\label{tab:validation}\begin{tabular}{c}\toprule pending \\ \bottomrule\end{tabular}\end{table}
+\begin{table}[htbp]
+\centering
+\caption{Random versus spatially blocked cross-validation, with feature selection performed outside and inside the resampling loop.}\label{tab:validation}
+\small
+\begin{tabular}{llcccc}
+\toprule
+Partitioning & Selection & Mean $R^2$ $\pm$ SD & Min & Max & Selection overlap \\
+\midrule
+random & outside & $0.7496 \pm 0.0171$ & 0.732 & 0.784 & 1.00 \\
+random & inside & $0.7496 \pm 0.0171$ & 0.732 & 0.784 & 1.00 \\
+spatial & outside & $0.2316 \pm 0.7525$ & -1.746 & 0.669 & 1.00 \\
+spatial & inside & $0.2316 \pm 0.7525$ & -1.746 & 0.669 & 1.00 \\
+nested random & inside & $0.7532 \pm 0.0090$ & 0.744 & 0.767 & --- \\
+nested spatial & inside & $-0.5344 \pm 2.0386$ & -4.091 & 0.660 & --- \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize Spatial optimism $= 0.5180$; selection optimism $= 0.0000$ (random) and $0.0000$ (spatial). Selection overlap is the mean pairwise share of the twelve chosen features common to two folds.\end{flushleft}
+\end{table}

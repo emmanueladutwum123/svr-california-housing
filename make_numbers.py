@@ -145,18 +145,36 @@ if d:
     m('SpatialCVsd', d['cv']['spatial|selection_inside|default']['sd'], '%.4f')
     m('NestedRandom', d['nested']['random']['mean'], '%.4f')
     m('NestedSpatial', d['nested']['spatial']['mean'], '%.4f')
+    for _sch, _tag in [('random', 'Random'), ('spatial', 'Spatial')]:
+        _pf = d['nested'][_sch]['per_fold']
+        m('Nested' + _tag + 'Min', min(_pf), '%.3f')
+        m('Nested' + _tag + 'Max', max(_pf), '%.3f')
 
 # ---- E6 datasets -----------------------------------------------------------
 d = load('e6_datasets')
 if d:
+    # Both scaler strategies are reported. Emitting only 'auto' hid the fact that
+    # the component ordering reproduces under uniform standardisation but NOT under
+    # the distribution-aware rule, which is negative on Ames.
     for name in d:
         tag = name.title().replace('_', '')
-        sh = d[name]['analysis']['auto']['shapley']
-        m('DS' + tag + 'Scal', sh['S'], '%.4f')
-        m('DS' + tag + 'Select', sh['K'], '%.4f')
-        m('DS' + tag + 'Tune', sh['T'], '%.4f')
+        for strat, suffix in [('uniform', 'Uni'), ('auto', '')]:
+            sh = d[name]['analysis'][strat]['shapley']
+            m('DS' + tag + suffix + 'Scal', sh['S'], '%+.4f')
+            m('DS' + tag + suffix + 'Select', sh['K'], '%+.4f')
+            m('DS' + tag + suffix + 'Tune', sh['T'], '%+.4f')
         m('DS' + tag + 'Base', d[name]['cells']['none|all|default']['r2'], '%.4f')
         m('DS' + tag + 'Full', d[name]['cells']['auto|topk|tuned']['r2'], '%.4f')
+        m('DS' + tag + 'FullUni', d[name]['cells']['uniform|topk|tuned']['r2'], '%.4f')
+        m('DS' + tag + 'N', d[name]['n_train'], '%d')
+        m('DS' + tag + 'P', d[name]['n_features'], '%d')
+    # does the ordering scaling > tuning > selection hold, per strategy?
+    def holds(name, strat):
+        sh = d[name]['analysis'][strat]['shapley']
+        return sh['S'] > sh['T'] > sh['K']
+    m('NOrderHoldsUni', sum(holds(n, 'uniform') for n in d), '%d')
+    m('NOrderHoldsAuto', sum(holds(n, 'auto') for n in d), '%d')
+    m('NDatasets', len(d), '%d')
 
 # ---- E7 sensitivity --------------------------------------------------------
 d = load('e7_sensitivity')

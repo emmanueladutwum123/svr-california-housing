@@ -1,1 +1,14 @@
-\begin{table}[htbp]\centering\caption{tab datasets --- pending, experiment still running.}\label{tab:datasets}\begin{tabular}{c}\toprule pending \\ \bottomrule\end{tabular}\end{table}
+\begin{table}[htbp]
+\centering
+\caption{The same workflow applied unchanged to three tabular regression datasets. Shapley values are computed over the $3 \times 2 \times 2$ design within each dataset.}\label{tab:datasets}
+\small
+\begin{tabular}{lrrrcccccc}
+\toprule
+Dataset & $n_{\text{train}}$ & $n_{\text{test}}$ & $p$ & Baseline $R^2$ & Full $R^2$ & Scaling & Selection & Tuning \\
+\midrule
+california & 10000 & 6192 & 18 & 0.5013 & 0.7563 & $+0.1616$ & $+0.0186$ & $+0.0749$ \\
+kc house & 10000 & 6484 & 20 & 0.3888 & 0.8092 & $+0.0805$ & $+0.1197$ & $+0.2202$ \\
+ames & 1022 & 438 & 36 & 0.6819 & 0.8358 & $-0.1558$ & $+0.1606$ & $+0.1491$ \\
+\bottomrule
+\end{tabular}
+\end{table}

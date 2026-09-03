@@ -63,11 +63,17 @@ varies by \RangeScal{} in $R^2$ depending only on where it is placed in the sequ
 order-independent Shapley value is $\ShapScal$. Scaling remains the largest single
 contributor, but the previous percentage is withdrawn.
 
-The revision also reports two results that contradict the earlier framing and that I have
+The revision also reports three results that contradict the earlier framing, and that I have
 chosen to report rather than omit. The feature-specific scaling strategy I previously
 presented as the paper's preprocessing advance does \emph{not} outperform plain
 standardisation on this dataset --- it is worse, by a difference that is significant under a
-paired test. And the derived features contribute little once selection and tuning are in
+paired test. The distribution-aware scaler rule I introduced in this revision to replace it
+does not transfer either: applying the workflow to King County and Ames housing data, which
+the Editor and Reviewer~2 asked for, shows that the component ordering holds on all
+\NOrderHoldsUni{} datasets under plain standardisation but on only \NOrderHoldsAuto{} under
+the rule, whose contribution on Ames is negative. Testing the workflow on further datasets
+therefore falsified part of it rather than corroborating it, and I have withdrawn the rule as
+a contribution. And the derived features contribute little once selection and tuning are in
 place. In addition, spatially blocked cross-validation, which Reviewer~1 requested, reveals
 that the optimism of random partitioning on these geographically structured data exceeds
 every pipeline effect measured anywhere in the study. That finding qualifies the headline

@@ -94,11 +94,14 @@ every resampling scheme. The evaluation comprises:
 \item \textbf{Spatial optimism dominates.} Spatially blocked cross-validation lowers the
       estimate by \SpatialOptimism{} relative to random partitioning --- a larger effect than
       any pipeline component measured in the study.
-\item \textbf{Two negative results.} The feature-specific scaling strategy proposed in the
+\item \textbf{Three negative results.} The feature-specific scaling strategy proposed in the
       earlier version of this work does \emph{not} outperform plain standardisation
-      ($\CfgManualFull$ against $\CfgUniformFull$ on an identical split), and the derived
-      features contribute little once selection and tuning are present. Both are reported
-      rather than omitted.
+      ($\CfgManualFull$ against $\CfgUniformFull$ on an identical split); the
+      distribution-aware scaler rule introduced to replace it does \emph{not} transfer,
+      preserving the component ordering on \NOrderHoldsAuto{} of \NDatasets{} datasets
+      against \NOrderHoldsUni{} for plain standardisation and carrying a negative Shapley
+      value on Ames ($\DSAmesScal$); and the derived features contribute little once
+      selection and tuning are present. All three are reported rather than omitted.
 \end{enumerate}
 
 \section{Specific contributions to the AI field}

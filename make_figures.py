@@ -196,16 +196,23 @@ def fig_datasets():
     names = list(d)
     comps = ['S', 'K', 'T']
     labels = {'S': 'scaling', 'K': 'selection', 'T': 'tuning'}
-    fig, ax = plt.subplots(figsize=(5.6, 3.0))
+    # Both strategies are plotted: the ordering is preserved under uniform
+    # standardisation and is not preserved under the rule-based assignment.
+    fig, axes = plt.subplots(1, 2, figsize=(7.4, 3.0), sharey=True)
     w = 0.25
-    for i, c in enumerate(comps):
-        ax.bar(np.arange(len(names)) + (i - 1) * w,
-               [d[n]['analysis']['auto']['shapley'][c] for n in names], w,
-               label=labels[c])
-    ax.set_xticks(range(len(names)))
-    ax.set_xticklabels([n.replace('_', ' ') for n in names])
-    ax.set_ylabel('Shapley value  ($\\Delta R^2$)')
-    ax.axhline(0, color='k', lw=0.5); ax.legend(frameon=False, fontsize=8)
+    for ax, strat, title in zip(axes, ['uniform', 'auto'],
+                                ['uniform standardisation',
+                                 'rule-based assignment (Alg. 1)']):
+        for i, c in enumerate(comps):
+            ax.bar(np.arange(len(names)) + (i - 1) * w,
+                   [d[n]['analysis'][strat]['shapley'][c] for n in names], w,
+                   label=labels[c])
+        ax.set_xticks(range(len(names)))
+        ax.set_xticklabels([n.replace('_', ' ') for n in names], fontsize=8)
+        ax.axhline(0, color='k', lw=0.5)
+        ax.set_title(title, fontsize=9)
+    axes[0].set_ylabel('Shapley value  ($\\Delta R^2$)')
+    axes[1].legend(frameon=False, fontsize=8)
     save(fig, 'fig_datasets')
 
 

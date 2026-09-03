@@ -1,0 +1,702 @@
+{
+  "california": {
+    "n_train": 10000,
+    "n_test": 6192,
+    "n_features": 18,
+    "k": 12,
+    "selected": [
+      "Income_per_Room",
+      "MedInc",
+      "Room_Value_Score",
+      "Age_Income_Interaction",
+      "Longitude",
+      "Latitude",
+      "Location_Score",
+      "Coastal_Proximity",
+      "Rooms_per_Person",
+      "Bedroom_Ratio",
+      "Income_Density",
+      "Modernization_Score"
+    ],
+    "cells": {
+      "none|all|default": {
+        "r2": 0.5012744783599734,
+        "rmse": 0.8127470594522163,
+        "n_features": 18,
+        "best_params": {},
+        "seconds": 3.5
+      },
+      "none|all|tuned": {
+        "r2": 0.6315864900589272,
+        "rmse": 0.6985417760821838,
+        "n_features": 18,
+        "best_params": {
+          "svr__C": "100",
+          "svr__epsilon": "0.1",
+          "svr__gamma": "scale"
+        },
+        "seconds": 83.2
+      },
+      "none|topk|default": {
+        "r2": 0.5258905597580292,
+        "rmse": 0.792435479201279,
+        "n_features": 12,
+        "best_params": {},
+        "seconds": 4.0
+      },
+      "none|topk|tuned": {
+        "r2": 0.6652127523135802,
+        "rmse": 0.665900074926386,
+        "n_features": 12,
+        "best_params": {
+          "svr__C": "100",
+          "svr__epsilon": "0.5",
+          "svr__gamma": "scale"
+        },
+        "seconds": 118.4
+      },
+      "uniform|all|default": {
+        "r2": 0.7619195572303882,
+        "rmse": 0.5615474649739121,
+        "n_features": 18,
+        "best_params": {},
+        "seconds": 5.1
+      },
+      "uniform|all|tuned": {
+        "r2": 0.7717035598849276,
+        "rmse": 0.5498879210573574,
+        "n_features": 18,
+        "best_params": {
+          "svr__C": "10",
+          "svr__epsilon": "0.1",
+          "svr__gamma": "scale"
+        },
+        "seconds": 224.6
+      },
+      "uniform|topk|default": {
+        "r2": 0.7627176668186255,
+        "rmse": 0.5606054458738989,
+        "n_features": 12,
+        "best_params": {},
+        "seconds": 5.7
+      },
+      "uniform|topk|tuned": {
+        "r2": 0.7768472918000433,
+        "rmse": 0.5436578849050586,
+        "n_features": 12,
+        "best_params": {
+          "svr__C": "10",
+          "svr__epsilon": "0.1",
+          "svr__gamma": "0.1"
+        },
+        "seconds": 170.0
+      },
+      "auto|all|default": {
+        "r2": 0.7282368105627681,
+        "rmse": 0.5999567248529819,
+        "n_features": 18,
+        "best_params": {},
+        "seconds": 4.0
+      },
+      "auto|all|tuned": {
+        "r2": 0.7489992972079835,
+        "rmse": 0.5765833259539997,
+        "n_features": 18,
+        "best_params": {
+          "svr__C": "10",
+          "svr__epsilon": "0.1",
+          "svr__gamma": "scale"
+        },
+        "seconds": 197.5
+      },
+      "auto|topk|default": {
+        "r2": 0.7420212901522847,
+        "rmse": 0.5845431068428243,
+        "n_features": 12,
+        "best_params": {},
+        "seconds": 3.6
+      },
+      "auto|topk|tuned": {
+        "r2": 0.7563488056537914,
+        "rmse": 0.568079192801937,
+        "n_features": 12,
+        "best_params": {
+          "svr__C": "10",
+          "svr__epsilon": "0.1",
+          "svr__gamma": "scale"
+        },
+        "seconds": 224.9
+      }
+    },
+    "analysis": {
+      "uniform": {
+        "paths": {
+          "S->K->T": {
+            "S": 0.2606,
+            "K": 0.0008,
+            "T": 0.0141
+          },
+          "S->T->K": {
+            "S": 0.2606,
+            "T": 0.0098,
+            "K": 0.0051
+          },
+          "K->S->T": {
+            "K": 0.0246,
+            "S": 0.2368,
+            "T": 0.0141
+          },
+          "K->T->S": {
+            "K": 0.0246,
+            "T": 0.1393,
+            "S": 0.1116
+          },
+          "T->S->K": {
+            "T": 0.1303,
+            "S": 0.1401,
+            "K": 0.0051
+          },
+          "T->K->S": {
+            "T": 0.1303,
+            "K": 0.0336,
+            "S": 0.1116
+          }
+        },
+        "shapley": {
+          "S": 0.1869,
+          "K": 0.0157,
+          "T": 0.073
+        }
+      },
+      "auto": {
+        "paths": {
+          "S->K->T": {
+            "S": 0.227,
+            "K": 0.0138,
+            "T": 0.0143
+          },
+          "S->T->K": {
+            "S": 0.227,
+            "T": 0.0208,
+            "K": 0.0073
+          },
+          "K->S->T": {
+            "K": 0.0246,
+            "S": 0.2161,
+            "T": 0.0143
+          },
+          "K->T->S": {
+            "K": 0.0246,
+            "T": 0.1393,
+            "S": 0.0911
+          },
+          "T->S->K": {
+            "T": 0.1303,
+            "S": 0.1174,
+            "K": 0.0073
+          },
+          "T->K->S": {
+            "T": 0.1303,
+            "K": 0.0336,
+            "S": 0.0911
+          }
+        },
+        "shapley": {
+          "S": 0.1616,
+          "K": 0.0186,
+          "T": 0.0749
+        }
+      }
+    },
+    "scaler_assignment": {
+      "Income_per_Room": "standard",
+      "MedInc": "standard",
+      "Room_Value_Score": "robust",
+      "Age_Income_Interaction": "robust",
+      "Longitude": "minmax",
+      "Latitude": "minmax",
+      "Location_Score": "minmax",
+      "Coastal_Proximity": "standard",
+      "Rooms_per_Person": "robust",
+      "Bedroom_Ratio": "standard",
+      "Income_Density": "robust",
+      "Modernization_Score": "robust"
+    }
+  },
+  "kc_house": {
+    "n_train": 10000,
+    "n_test": 6484,
+    "n_features": 20,
+    "k": 14,
+    "selected": [
+      "grade",
+      "sqft_living",
+      "lat",
+      "sqft_living15",
+      "sqft_above",
+      "bathrooms",
+      "view",
+      "sqft_basement",
+      "bedrooms",
+      "long",
+      "floors",
+      "yr_built",
+      "sqft_lot15",
+      "sqft_lot"
+    ],
+    "cells": {
+      "none|all|default": {
+        "r2": 0.38878040963134664,
+        "rmse": 2.939414956570832,
+        "n_features": 20,
+        "best_params": {},
+        "seconds": 8.8
+      },
+      "none|all|tuned": {
+        "r2": 0.5222834259280349,
+        "rmse": 2.598647792791077,
+        "n_features": 20,
+        "best_params": {
+          "svr__C": "100",
+          "svr__epsilon": "1.0",
+          "svr__gamma": "scale"
+        },
+        "seconds": 160.5
+      },
+      "none|topk|default": {
+        "r2": 0.38537541256954444,
+        "rmse": 2.9475910678759614,
+        "n_features": 14,
+        "best_params": {},
+        "seconds": 9.4
+      },
+      "none|topk|tuned": {
+        "r2": 0.5149015966274946,
+        "rmse": 2.6186483935006497,
+        "n_features": 14,
+        "best_params": {
+          "svr__C": "100",
+          "svr__epsilon": "0.5",
+          "svr__gamma": "scale"
+        },
+        "seconds": 205.6
+      },
+      "uniform|all|default": {
+        "r2": 0.6579280401801899,
+        "rmse": 2.1989786097062907,
+        "n_features": 20,
+        "best_params": {},
+        "seconds": 10.2
+      },
+      "uniform|all|tuned": {
+        "r2": 0.7736880215180659,
+        "rmse": 1.7886115776221403,
+        "n_features": 20,
+        "best_params": {
+          "svr__C": "10",
+          "svr__epsilon": "0.5",
+          "svr__gamma": "scale"
+        },
+        "seconds": 355.6
+      },
+      "uniform|topk|default": {
+        "r2": 0.6901831390634809,
+        "rmse": 2.092737668865894,
+        "n_features": 14,
+        "best_params": {},
+        "seconds": 4.6
+      },
+      "uniform|topk|tuned": {
+        "r2": 0.7806342300103598,
+        "rmse": 1.7609486719230782,
+        "n_features": 14,
+        "best_params": {
+          "svr__C": "10",
+          "svr__epsilon": "1.0",
+          "svr__gamma": "auto"
+        },
+        "seconds": 275.0
+      },
+      "auto|all|default": {
+        "r2": 0.07470124665299482,
+        "rmse": 3.6166231295818516,
+        "n_features": 20,
+        "best_params": {},
+        "seconds": 5.4
+      },
+      "auto|all|tuned": {
+        "r2": 0.7472643610184541,
+        "rmse": 1.8901466921887178,
+        "n_features": 20,
+        "best_params": {
+          "svr__C": "10",
+          "svr__epsilon": "0.5",
+          "svr__gamma": "auto"
+        },
+        "seconds": 307.2
+      },
+      "auto|topk|default": {
+        "r2": 0.6832441497477297,
+        "rmse": 2.116043489944746,
+        "n_features": 14,
+        "best_params": {},
+        "seconds": 4.7
+      },
+      "auto|topk|tuned": {
+        "r2": 0.8091846290460928,
+        "rmse": 1.6423622150564618,
+        "n_features": 14,
+        "best_params": {
+          "svr__C": "100",
+          "svr__epsilon": "1.0",
+          "svr__gamma": "scale"
+        },
+        "seconds": 260.4
+      }
+    },
+    "analysis": {
+      "uniform": {
+        "paths": {
+          "S->K->T": {
+            "S": 0.2691,
+            "K": 0.0323,
+            "T": 0.0905
+          },
+          "S->T->K": {
+            "S": 0.2691,
+            "T": 0.1158,
+            "K": 0.0069
+          },
+          "K->S->T": {
+            "K": -0.0034,
+            "S": 0.3048,
+            "T": 0.0905
+          },
+          "K->T->S": {
+            "K": -0.0034,
+            "T": 0.1295,
+            "S": 0.2657
+          },
+          "T->S->K": {
+            "T": 0.1335,
+            "S": 0.2514,
+            "K": 0.0069
+          },
+          "T->K->S": {
+            "T": 0.1335,
+            "K": -0.0074,
+            "S": 0.2657
+          }
+        },
+        "shapley": {
+          "S": 0.271,
+          "K": 0.0053,
+          "T": 0.1155
+        }
+      },
+      "auto": {
+        "paths": {
+          "S->K->T": {
+            "S": -0.3141,
+            "K": 0.6085,
+            "T": 0.1259
+          },
+          "S->T->K": {
+            "S": -0.3141,
+            "T": 0.6726,
+            "K": 0.0619
+          },
+          "K->S->T": {
+            "K": -0.0034,
+            "S": 0.2979,
+            "T": 0.1259
+          },
+          "K->T->S": {
+            "K": -0.0034,
+            "T": 0.1295,
+            "S": 0.2943
+          },
+          "T->S->K": {
+            "T": 0.1335,
+            "S": 0.225,
+            "K": 0.0619
+          },
+          "T->K->S": {
+            "T": 0.1335,
+            "K": -0.0074,
+            "S": 0.2943
+          }
+        },
+        "shapley": {
+          "S": 0.0805,
+          "K": 0.1197,
+          "T": 0.2202
+        }
+      }
+    },
+    "scaler_assignment": {
+      "grade": "robust",
+      "sqft_living": "standard",
+      "lat": "standard",
+      "sqft_living15": "standard",
+      "sqft_above": "standard",
+      "bathrooms": "standard",
+      "view": "robust",
+      "sqft_basement": "standard",
+      "bedrooms": "standard",
+      "long": "standard",
+      "floors": "standard",
+      "yr_built": "minmax",
+      "sqft_lot15": "robust",
+      "sqft_lot": "robust"
+    }
+  },
+  "ames": {
+    "n_train": 1022,
+    "n_test": 438,
+    "n_features": 36,
+    "k": 24,
+    "selected": [
+      "OverallQual",
+      "GrLivArea",
+      "TotalBsmtSF",
+      "GarageCars",
+      "GarageArea",
+      "1stFlrSF",
+      "YearBuilt",
+      "GarageYrBlt",
+      "FullBath",
+      "YearRemodAdd",
+      "TotRmsAbvGrd",
+      "Fireplaces",
+      "LotFrontage",
+      "BsmtFinSF1",
+      "2ndFlrSF",
+      "OpenPorchSF",
+      "MasVnrArea",
+      "LotArea",
+      "MSSubClass",
+      "WoodDeckSF",
+      "BsmtUnfSF",
+      "HalfBath",
+      "BedroomAbvGr",
+      "BsmtFullBath"
+    ],
+    "cells": {
+      "none|all|default": {
+        "r2": 0.681920669642168,
+        "rmse": 0.4406806579244659,
+        "n_features": 36,
+        "best_params": {},
+        "seconds": 0.1
+      },
+      "none|all|tuned": {
+        "r2": 0.7302400330781449,
+        "rmse": 0.40583080993150944,
+        "n_features": 36,
+        "best_params": {
+          "svr__C": "100",
+          "svr__epsilon": "0.1",
+          "svr__gamma": "scale"
+        },
+        "seconds": 2.5
+      },
+      "none|topk|default": {
+        "r2": 0.6808678817403211,
+        "rmse": 0.4414093440758195,
+        "n_features": 24,
+        "best_params": {},
+        "seconds": 0.1
+      },
+      "none|topk|tuned": {
+        "r2": 0.749002845031064,
+        "rmse": 0.39146294982342467,
+        "n_features": 24,
+        "best_params": {
+          "svr__C": "100",
+          "svr__epsilon": "0.1",
+          "svr__gamma": "scale"
+        },
+        "seconds": 2.1
+      },
+      "uniform|all|default": {
+        "r2": 0.8248731863489003,
+        "rmse": 0.3269885819842782,
+        "n_features": 36,
+        "best_params": {},
+        "seconds": 0.1
+      },
+      "uniform|all|tuned": {
+        "r2": 0.8334984889089656,
+        "rmse": 0.31883453362619435,
+        "n_features": 36,
+        "best_params": {
+          "svr__C": "10",
+          "svr__epsilon": "0.1",
+          "svr__gamma": "scale"
+        },
+        "seconds": 3.1
+      },
+      "uniform|topk|default": {
+        "r2": 0.8398582033662213,
+        "rmse": 0.3126861269795437,
+        "n_features": 24,
+        "best_params": {},
+        "seconds": 0.1
+      },
+      "uniform|topk|tuned": {
+        "r2": 0.8381147687712848,
+        "rmse": 0.31438359795004006,
+        "n_features": 24,
+        "best_params": {
+          "svr__C": "10",
+          "svr__epsilon": "0.1",
+          "svr__gamma": "scale"
+        },
+        "seconds": 2.3
+      },
+      "auto|all|default": {
+        "r2": 0.03642856555442697,
+        "rmse": 0.7670050498058792,
+        "n_features": 36,
+        "best_params": {},
+        "seconds": 0.1
+      },
+      "auto|all|tuned": {
+        "r2": 0.7605627578387418,
+        "rmse": 0.3823420952473975,
+        "n_features": 36,
+        "best_params": {
+          "svr__C": "100",
+          "svr__epsilon": "0.01",
+          "svr__gamma": "scale"
+        },
+        "seconds": 3.6
+      },
+      "auto|topk|default": {
+        "r2": 0.833037797201687,
+        "rmse": 0.31927531930332287,
+        "n_features": 24,
+        "best_params": {},
+        "seconds": 0.1
+      },
+      "auto|topk|tuned": {
+        "r2": 0.8357738853743071,
+        "rmse": 0.31664845549700704,
+        "n_features": 24,
+        "best_params": {
+          "svr__C": "10",
+          "svr__epsilon": "0.1",
+          "svr__gamma": "scale"
+        },
+        "seconds": 3.6
+      }
+    },
+    "analysis": {
+      "uniform": {
+        "paths": {
+          "S->K->T": {
+            "S": 0.143,
+            "K": 0.015,
+            "T": -0.0017
+          },
+          "S->T->K": {
+            "S": 0.143,
+            "T": 0.0086,
+            "K": 0.0046
+          },
+          "K->S->T": {
+            "K": -0.0011,
+            "S": 0.159,
+            "T": -0.0017
+          },
+          "K->T->S": {
+            "K": -0.0011,
+            "T": 0.0681,
+            "S": 0.0891
+          },
+          "T->S->K": {
+            "T": 0.0483,
+            "S": 0.1033,
+            "K": 0.0046
+          },
+          "T->K->S": {
+            "T": 0.0483,
+            "K": 0.0188,
+            "S": 0.0891
+          }
+        },
+        "shapley": {
+          "S": 0.1211,
+          "K": 0.0068,
+          "T": 0.0283
+        }
+      },
+      "auto": {
+        "paths": {
+          "S->K->T": {
+            "S": -0.6455,
+            "K": 0.7966,
+            "T": 0.0027
+          },
+          "S->T->K": {
+            "S": -0.6455,
+            "T": 0.7241,
+            "K": 0.0752
+          },
+          "K->S->T": {
+            "K": -0.0011,
+            "S": 0.1522,
+            "T": 0.0027
+          },
+          "K->T->S": {
+            "K": -0.0011,
+            "T": 0.0681,
+            "S": 0.0868
+          },
+          "T->S->K": {
+            "T": 0.0483,
+            "S": 0.0303,
+            "K": 0.0752
+          },
+          "T->K->S": {
+            "T": 0.0483,
+            "K": 0.0188,
+            "S": 0.0868
+          }
+        },
+        "shapley": {
+          "S": -0.1558,
+          "K": 0.1606,
+          "T": 0.1491
+        }
+      }
+    },
+    "scaler_assignment": {
+      "OverallQual": "standard",
+      "GrLivArea": "standard",
+      "TotalBsmtSF": "standard",
+      "GarageCars": "standard",
+      "GarageArea": "standard",
+      "1stFlrSF": "standard",
+      "YearBuilt": "standard",
+      "GarageYrBlt": "standard",
+      "FullBath": "minmax",
+      "YearRemodAdd": "standard",
+      "TotRmsAbvGrd": "standard",
+      "Fireplaces": "standard",
+      "LotFrontage": "robust",
+      "BsmtFinSF1": "standard",
+      "2ndFlrSF": "standard",
+      "OpenPorchSF": "robust",
+      "MasVnrArea": "robust",
+      "LotArea": "robust",
+      "MSSubClass": "robust",
+      "WoodDeckSF": "standard",
+      "BsmtUnfSF": "standard",
+      "HalfBath": "standard",
+      "BedroomAbvGr": "standard",
+      "BsmtFullBath": "minmax"
+    }
+  }
+}

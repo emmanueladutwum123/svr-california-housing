@@ -1,0 +1,211 @@
+{
+  "block_sizes": [
+    1831,
+    3158,
+    7159,
+    943,
+    474,
+    1474,
+    1840,
+    1011,
+    987,
+    1763
+  ],
+  "outer_block_sizes": [
+    8827,
+    969,
+    1798,
+    2230,
+    6816
+  ],
+  "global_top12": [
+    "Income_per_Room",
+    "MedInc",
+    "Room_Value_Score",
+    "Age_Income_Interaction",
+    "Longitude",
+    "Location_Score",
+    "Latitude",
+    "Coastal_Proximity",
+    "Rooms_per_Person",
+    "Bedroom_Ratio",
+    "Income_Density",
+    "Modernization_Score"
+  ],
+  "cv": {
+    "random|selection_outside|default": {
+      "scheme": "random",
+      "select_inside": false,
+      "tuned": false,
+      "per_fold": [
+        0.7336,
+        0.7393,
+        0.7648,
+        0.7354,
+        0.7621,
+        0.7322,
+        0.7572,
+        0.7844,
+        0.7477,
+        0.7389
+      ],
+      "mean": 0.7496,
+      "sd": 0.0171,
+      "min": 0.7322,
+      "max": 0.7844,
+      "mean_pairwise_selection_overlap": 1.0
+    },
+    "random|selection_inside|default": {
+      "scheme": "random",
+      "select_inside": true,
+      "tuned": false,
+      "per_fold": [
+        0.7336,
+        0.7393,
+        0.7648,
+        0.7354,
+        0.7621,
+        0.7322,
+        0.7572,
+        0.7844,
+        0.7477,
+        0.7389
+      ],
+      "mean": 0.7496,
+      "sd": 0.0171,
+      "min": 0.7322,
+      "max": 0.7844,
+      "mean_pairwise_selection_overlap": 1.0
+    },
+    "spatial|selection_outside|default": {
+      "scheme": "spatial",
+      "select_inside": false,
+      "tuned": false,
+      "per_fold": [
+        0.5526,
+        0.6321,
+        0.6563,
+        0.6688,
+        0.5579,
+        0.3822,
+        -0.2833,
+        0.2744,
+        0.6212,
+        -1.7465
+      ],
+      "mean": 0.2316,
+      "sd": 0.7525,
+      "min": -1.7465,
+      "max": 0.6688,
+      "mean_pairwise_selection_overlap": 1.0
+    },
+    "spatial|selection_inside|default": {
+      "scheme": "spatial",
+      "select_inside": true,
+      "tuned": false,
+      "per_fold": [
+        0.5526,
+        0.6321,
+        0.6563,
+        0.6688,
+        0.5579,
+        0.3822,
+        -0.2833,
+        0.2744,
+        0.6212,
+        -1.7465
+      ],
+      "mean": 0.2316,
+      "sd": 0.7525,
+      "min": -1.7465,
+      "max": 0.6688,
+      "mean_pairwise_selection_overlap": 1.0
+    }
+  },
+  "nested": {
+    "random": {
+      "per_fold": [
+        0.7443,
+        0.7571,
+        0.7473,
+        0.7669,
+        0.7507
+      ],
+      "mean": 0.7532,
+      "sd": 0.009,
+      "best_params_per_fold": [
+        {
+          "svr__C": 3.1763269920199058,
+          "svr__epsilon": 0.038234752246751866,
+          "svr__gamma": 0.06847920095574778
+        },
+        {
+          "svr__C": 3.1763269920199058,
+          "svr__epsilon": 0.038234752246751866,
+          "svr__gamma": 0.06847920095574778
+        },
+        {
+          "svr__C": 3.392060513051208,
+          "svr__epsilon": 0.017541893487450794,
+          "svr__gamma": 0.030586566669785254
+        },
+        {
+          "svr__C": 3.392060513051208,
+          "svr__epsilon": 0.017541893487450794,
+          "svr__gamma": 0.030586566669785254
+        },
+        {
+          "svr__C": 3.1763269920199058,
+          "svr__epsilon": 0.038234752246751866,
+          "svr__gamma": 0.06847920095574778
+        }
+      ],
+      "seconds": 1476.5
+    },
+    "spatial": {
+      "per_fold": [
+        0.612,
+        -0.4235,
+        0.6601,
+        0.5702,
+        -4.0911
+      ],
+      "mean": -0.5344,
+      "sd": 2.0386,
+      "best_params_per_fold": [
+        {
+          "svr__C": 20.12196163610286,
+          "svr__epsilon": 0.0420167205437253,
+          "svr__gamma": 0.03632486956676605
+        },
+        {
+          "svr__C": 0.3055181867080262,
+          "svr__epsilon": 0.03839629299804171,
+          "svr__gamma": 0.01256277350380703
+        },
+        {
+          "svr__C": 3.1763269920199058,
+          "svr__epsilon": 0.038234752246751866,
+          "svr__gamma": 0.06847920095574778
+        },
+        {
+          "svr__C": 20.12196163610286,
+          "svr__epsilon": 0.0420167205437253,
+          "svr__gamma": 0.03632486956676605
+        },
+        {
+          "svr__C": 3.1763269920199058,
+          "svr__epsilon": 0.038234752246751866,
+          "svr__gamma": 0.06847920095574778
+        }
+      ],
+      "seconds": 1066.4
+    }
+  },
+  "optimism": {
+    "spatial_optimism": 0.518,
+    "selection_optimism_random": 0.0,
+    "selection_optimism_spatial": 0.0,
+    "nested_spatial_gap": 1.2876
+  }
+}
