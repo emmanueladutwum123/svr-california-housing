@@ -1,0 +1,234 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+\definecolor{springerblue}{RGB}{26,58,107}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=springerblue,
+  urlcolor=springerblue
+}
+
+\titleformat{\section}
+  {\large\bfseries\color{springerblue}}
+  {\thesection.}{0.6em}{}[\vspace{-4pt}\rule{\linewidth}{0.4pt}]
+
+\titleformat{\subsection}
+  {\normalsize\bfseries}
+  {}{0em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{springerblue}{Contribution Information Sheet}}
+\fancyhead[R]{\small\textcolor{springerblue}{Discover Artificial Intelligence}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ---------------------------------------------------------------
+\begin{document}
+
+% Title block
+\begin{center}
+  {\LARGE\bfseries\color{springerblue} Contribution Information Sheet}\\[6pt]
+  {\large Discover Artificial Intelligence --- Springer Nature}\\[18pt]
+  \rule{\linewidth}{1pt}\\[10pt]
+  {\large\bfseries Optimised Support Vector Regression for California Housing\\
+  Price Prediction: The Critical Role of Feature Engineering\\
+  and Hyperparameter Tuning}\\[10pt]
+  \rule{\linewidth}{0.4pt}
+\end{center}
+
+\vspace{6pt}
+
+\begin{tabular}{@{}ll@{}}
+\textbf{Corresponding Author:}  & Emmanuel Adutwum \\
+\textbf{Affiliation:}           & Soka University of America, Aliso Viejo, CA, USA \\
+\textbf{Email:}                 & \href{mailto:eadutwum@soka.edu}{eadutwum@soka.edu} \\
+\textbf{Transfer Ref.\ (SNAPP):}& 80b45e30-56da-4033-b5e6-07f0e94c6143 \\
+\end{tabular}
+
+\vspace{14pt}
+
+% ---------------------------------------------------------------
+\section{Scientific Question Addressed}
+
+A recent comparative study (Preethi et al., \textit{SN Computer Science}, 2025) reported
+that Support Vector Regression (SVR) ranks \emph{last} among five regression algorithms on
+the California Housing benchmark, achieving R\textsuperscript{2} = 0.60, and implicitly
+concluded that SVR is a weak choice for this class of problem.
+
+This paper asks a more precise question: \textbf{Does that poor performance reflect an
+inherent limitation of SVR as an algorithm, or does it reflect the experimental
+configuration under which SVR was evaluated?}
+
+This is a question about \textbf{evaluation methodology and reproducibility in applied AI}
+--- specifically, how much predictive performance is left unrealised when standard
+preprocessing steps are omitted from kernel-based models, and whether algorithm-ranking
+conclusions drawn from under-configured experiments are valid.
+
+% ---------------------------------------------------------------
+\section{Methodology}
+
+A four-stage ablation workflow is applied entirely within a leakage-safe
+\texttt{scikit-learn} Pipeline:
+
+\begin{enumerate}[leftmargin=1.8em]
+  \item \textbf{Baseline:} SVR-RBF on raw, unscaled features --- replicating Preethi
+        et al.\ (2025).
+  \item \textbf{Scaling:} \texttt{StandardScaler} applied inside the Pipeline so scaling
+        statistics are recomputed on each cross-validation fold (no data leakage).
+  \item \textbf{Feature Engineering:} Ten domain-motivated features derived from the
+        eight raw inputs (rooms-per-household, bedrooms ratio, population density,
+        log-median income, geographic interaction terms). An ensemble importance score
+        combining Mutual Information (40\%), Pearson correlation (30\%), and Random
+        Forest importance (30\%) selects the top 12 features.
+  \item \textbf{Hyperparameter Tuning:} \texttt{RandomizedSearchCV} with 20 iterations
+        and 3-fold inner cross-validation identifies the optimal kernel, $C$,
+        $\varepsilon$, and $\gamma$.
+\end{enumerate}
+
+A formal ablation study isolates the R\textsuperscript{2} contribution of each stage.
+Ten-fold outer cross-validation provides confidence intervals on the final generalisation
+estimate.
+
+% ---------------------------------------------------------------
+\section{Key Findings}
+
+\vspace{4pt}
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Pipeline Stage} & \textbf{Test R\textsuperscript{2}} & \textbf{Gain} \\
+\midrule
+Baseline --- no scaling (replication of prior work) & $-$0.054 & --- \\
+\quad + Feature scaling only                        & 0.690    & \textbf{+0.744} \\
+\quad + Domain-motivated feature engineering        & 0.716    & +0.026 \\
+\quad + Hyperparameter tuning (RandomizedSearchCV)  & \textbf{0.723} & +0.008 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{6pt}
+
+\textbf{Primary finding:} Feature scaling alone accounts for 95.7\% of the total
+R\textsuperscript{2} improvement (+0.744), reversing SVR from negative predictive
+power to competitive performance. This is not a minor artefact.
+
+\textbf{Secondary finding:} The properly configured SVR-RBF ranks 4th in a 10-model
+comparison --- below XGBoost (0.832), Random Forest (0.814), and Gradient Boosting
+(0.783), but substantially above Decision Trees, Linear Regression, Ridge, Lasso,
+Elastic Net, and KNN.
+
+\textbf{Generalisation:} Ten-fold cross-validation yields mean R\textsuperscript{2} =
+0.703 (95\% CI: [0.630, 0.775]). The confidence interval does not overlap with the
+reported baseline of 0.60, confirming statistical robustness across splits.
+
+% ---------------------------------------------------------------
+\section{Specific Contributions to the AI Field}
+
+\begin{enumerate}[leftmargin=1.8em]
+  \item \textbf{Ablation framework for pipeline evaluation.} A replicable four-stage
+        ablation design for isolating the contribution of scaling, feature engineering,
+        and hyperparameter optimisation. Applicable to any kernel-based or
+        distance-sensitive algorithm.
+
+  \item \textbf{Quantification of preprocessing sensitivity.} The +0.744 R\textsuperscript{2}
+        gain from scaling alone on a widely-used benchmark provides a concrete,
+        citable data point corroborating Fernandez-Delgado et al.\ (2014) and
+        Cao \& Tay (2001) on a modern standardised benchmark.
+
+  \item \textbf{Leakage-safe reproducible implementation.} The \texttt{scikit-learn}
+        Pipeline with \texttt{ColumnTransformer} ensures all preprocessing statistics
+        are computed exclusively on training data within each fold. Full code is
+        released as open source.
+
+  \item \textbf{Evaluation practice.} The paper demonstrates that algorithm rankings
+        derived from under-configured experiments can be misleading --- with direct
+        implications for comparative benchmarking standards in the AI/ML community.
+\end{enumerate}
+
+% ---------------------------------------------------------------
+\section{Significance and Fit for Discover Artificial Intelligence}
+
+The scope of \textit{Discover Artificial Intelligence} explicitly covers
+\emph{``machine and deep learning,''} \emph{``data analytics,''} and
+\emph{``AI enabled data-driven techniques''} --- all directly addressed here.
+
+Beyond the housing application, the paper raises a question fundamental to applied AI:
+\textbf{how much of an algorithm's perceived performance is a property of the algorithm
+itself, and how much is a property of the experimental pipeline around it?} The answer
+--- that 95.7\% of SVR's improvement comes from a single preprocessing step --- is
+both striking and broadly generalisable to any practitioner evaluating kernel methods
+against ensemble alternatives.
+
+The California Housing dataset (20,640 instances, part of the \texttt{scikit-learn}
+standard library) is one of the most widely cited supervised learning benchmarks,
+making results immediately reproducible by any reader with a Python environment.
+
+% ---------------------------------------------------------------
+\section{Intended Audience}
+
+\begin{itemize}[leftmargin=1.8em]
+  \item ML practitioners evaluating SVR and kernel methods for regression tasks
+  \item Researchers designing comparative benchmarking studies
+  \item AutoML and pipeline design researchers (preprocessing sensitivity is a
+        core concern)
+  \item Data science educators using the California Housing dataset in coursework
+\end{itemize}
+
+% ---------------------------------------------------------------
+\section{Reproducibility}
+
+Full implementation is publicly available at:\\[4pt]
+\url{https://github.com/emmanueladutwum123/svr-california-housing}
+
+\vspace{4pt}
+\begin{tabular}{@{}ll@{}}
+  \texttt{openwork.tex}          & LaTeX source \\
+  \texttt{svr\_implementation.py}& Complete Python pipeline \\
+  \texttt{svr\_notebook.ipynb}   & Jupyter notebook with all outputs \\
+  \texttt{Picture1--13.png}      & All manuscript figures \\
+\end{tabular}
+
+\vspace{6pt}
+Dataset: \texttt{sklearn.datasets.fetch\_california\_housing} (public, no special
+access required). All results reproducible with scikit-learn $\geq$ 1.0.
+
+% ---------------------------------------------------------------
+\section{Keywords}
+
+Support Vector Regression; Feature Engineering; Hyperparameter Optimisation;
+Ablation Study; Preprocessing Sensitivity; California Housing Dataset;
+Scikit-learn Pipeline; Kernel Methods; Reproducible Machine Learning;
+Supervised Regression
+
+% ---------------------------------------------------------------
+\section{Conflict of Interest}
+
+The author declares no conflicts of interest.
+
+% ---------------------------------------------------------------
+\section{Data Availability}
+
+The California Housing dataset is publicly available via the scikit-learn Python
+library (\texttt{sklearn.datasets.fetch\_california\_housing}), originally published
+by Pace \& Barry (1997). No proprietary data are used. All code and experimental
+outputs are available at
+\url{https://github.com/emmanueladutwum123/svr-california-housing}.
+
+\vspace{20pt}
+\noindent\rule{\linewidth}{0.4pt}\\[4pt]
+\small\textit{Prepared for submission to Discover Artificial Intelligence,
+Springer Nature, 2026.}
+
+\end{document}
