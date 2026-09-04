@@ -270,10 +270,20 @@ drafting and copy-editing prose, for implementing and refactoring the experiment
 for generating tables and figures from the result records; and it states that the research
 questions, experimental design, interpretation and all scientific claims are my own, that I
 have reviewed and verified every number, statement and reference, and that no text appears
-that I have not read and checked against the underlying results. Separately, the specific
-symptoms Reviewer~2 identified --- an excessive number of thin subsections, and mismatches
-between figures and captions --- have been fixed by consolidating the subsections and
-regenerating every figure with its caption from the same source.
+that I have not read and checked against the underlying results. Separately, and more importantly than the disclosure itself, I have
+addressed the two specific symptoms Reviewer~2 identified. On structure: the third level of
+sectioning has been removed entirely --- the earlier version had six subsubsections nested
+under twenty-six subsections, and the revision has none --- and every subsection in the body
+of the paper now carries substantive content. The total number of headings is similar to the
+earlier version, and I would rather explain that than disguise it: the paper now reports nine
+experiments where the earlier version reported one, so the headings carry more material
+rather than less. The only short subsections that remain are the seven items of the
+Declarations section, which the journal's own submission guidance asks to be given as
+individual subheadings. On figures: every figure is regenerated from its result record, and I
+have checked each caption against what its figure actually plots. That check was not
+redundant --- it caught one caption in this revision that described an earlier version of its
+figure, which is exactly the failure Reviewer~2 identified, and it is the reason the check is
+now part of the build rather than a one-off proofread.
 
 \section{Response to the internal editorial feedback}
 
@@ -467,10 +477,19 @@ are no longer the only point of comparison: Section~\ref{sec:res-models} places 
 this benchmark is connected to the broader literature in Section~\ref{sec:rw-benchmark}.
 
 \pt{R2.3 Disclose LLM use.}
-\reply Disclosed in full; see E12. I have also acted on the symptoms you identified rather
-than only on the disclosure: the thin subsections have been consolidated, and every figure is
-now regenerated from the result records together with its caption, which removes the
-figure/caption mismatches.
+\reply Disclosed in full; see E12, which also gives the specific structural changes: the six
+subsubsections of the earlier version are gone, no body subsection is now a stub, and every
+caption has been checked against the figure it labels. I should be straightforward about the
+underlying point rather than only about the disclosure. This revision was also prepared with
+the assistance of a large language model, and the declaration says so without qualification.
+What I can state is that the substance is not generated: the experiments were designed to
+answer your objections and the Editor's, they were run, and their results changed the paper's
+conclusions in three places where the outcome was not what I expected or wanted --- the
+reference value I had misread, the scaling attribution that turned out to be an ordering
+artefact, and the scaler rule that failed to transfer to your requested additional datasets
+and is now withdrawn. Every number in the manuscript is generated from a result record that
+is in the public repository, so any claim in the paper can be checked against the data that
+produced it.
 
 \pt{R2.4 The training procedure is unclear --- 3-fold HPO, then 10-fold evaluation on what
 data?}
