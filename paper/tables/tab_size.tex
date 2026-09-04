@@ -1,1 +1,21 @@
-\begin{table}[htbp]\centering\caption{tab size --- pending, experiment still running.}\label{tab:size}\begin{tabular}{c}\toprule pending \\ \bottomrule\end{tabular}\end{table}
+\begin{table}[htbp]
+\centering
+\caption{Effect of the SVR training-set size, and of a Nystr\"om kernel approximation fitted to the full training set.}\label{tab:size}
+\small
+\begin{tabular}{lccrr}
+\toprule
+Training rows & Test $R^2$ & Test RMSE & Support vectors & Fit time (s) \\
+\midrule
+1000 & 0.6775 & 0.6536 & 940 & 0.0 \\
+2000 & 0.7252 & 0.6033 & 1829 & 0.2 \\
+3000 & 0.7418 & 0.5848 & 2762 & 0.4 \\
+6000 & 0.7602 & 0.5635 & 5453 & 1.3 \\
+10000 & 0.7747 & 0.5462 & 9047 & 3.7 \\
+14448 & 0.7813 & 0.5382 & 12994 & 8.3 \\
+nystroem 200 (full train) & 0.6708 & 0.6603 & --- & 1.3 \\
+nystroem 500 (full train) & 0.7224 & 0.6064 & --- & 2.9 \\
+nystroem 1000 (full train) & 0.7524 & 0.5727 & --- & 6.4 \\
+nystroem 2000 (full train) & 0.7673 & 0.5552 & --- & 17.8 \\
+\bottomrule
+\end{tabular}
+\end{table}

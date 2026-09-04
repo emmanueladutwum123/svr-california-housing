@@ -1,1 +1,14 @@
-\begin{table}[htbp]\centering\caption{tab sensitivity --- pending, experiment still running.}\label{tab:sensitivity}\begin{tabular}{c}\toprule pending \\ \bottomrule\end{tabular}\end{table}
+\begin{table}[htbp]
+\centering
+\caption{Sensitivity of the test $R^2$ to the three constants that were fixed by hand.}\label{tab:sensitivity}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Swept quantity & Min $R^2$ & Max $R^2$ & Range & Value at the default \\
+\midrule
+Ensemble weights over the simplex (66 combinations) & 0.7128 & 0.7674 & 0.0546 & 0.7664 \\
+Number of selected features, $k \in [4, 18]$ & 0.5745 & 0.7683 & 0.1938 & 0.7664 \\
+Scaler-rule thresholds (9 combinations) & 0.7470 & 0.7474 & 0.0004 & --- \\
+\bottomrule
+\end{tabular}
+\end{table}

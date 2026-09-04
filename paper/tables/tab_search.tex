@@ -1,1 +1,15 @@
-\begin{table}[htbp]\centering\caption{tab search --- pending, experiment still running.}\label{tab:search}\begin{tabular}{c}\toprule pending \\ \bottomrule\end{tabular}\end{table}
+\begin{table}[htbp]
+\centering
+\caption{Exhaustive grid search over the v1 discretised space versus randomised search over continuous distributions.}\label{tab:search}
+\small
+\begin{tabular}{lrccr}
+\toprule
+Strategy & Fits & Best CV $R^2$ & Test $R^2$ & Time (s) \\
+\midrule
+grid 64 & 192 & 0.7786 & 0.7806 & 422 \\
+random 20 & 60 & 0.7694 & 0.7702 & 100 \\
+random 60 & 180 & 0.7773 & 0.7834 & 203 \\
+random 200 & 600 & 0.7786 & 0.7796 & 1377 \\
+\bottomrule
+\end{tabular}
+\end{table}

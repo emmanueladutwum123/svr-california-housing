@@ -368,10 +368,19 @@ little the derived block contributes once selection and tuning are present. Seco
 every hand-chosen constant: across \WeightN{} weight combinations on the simplex test $R^2$
 varies only between \WeightMin{} and \WeightMax{} (range \WeightRange{}), and the smallest
 overlap between any swept selection and the default top-twelve is \WeightMinOverlap{} of
-twelve; varying $k$ from 4 to 18 moves $R^2$ between \KrangeLo{} and \KrangeHi{}; varying the
-scaler thresholds over nine combinations moves it by \ThreshRange{}. The honest conclusion is
-that these constants are not load-bearing, which I take to be the appropriate justification
-for constants with no theoretical derivation.
+twelve; and varying the scaler thresholds over nine combinations moves it by \ThreshRange{}.
+Those two constants are therefore not load-bearing.
+
+The number of selected features is a different matter, and the sweep changed what I can
+claim. Varying $k$ from \KminAt{} to \KmaxAt{} moves $R^2$ between \KrangeLo{} and
+\KrangeHi{} --- a spread of almost $0.2$, larger than any component effect in the ablation.
+The dependence is not smooth: $R^2$ rises steeply to $k = \KplateauFrom$ and is then flat,
+varying by only \KplateauRange{} across all $k$ from \KplateauFrom{} to \KmaxAt{}. So the
+defensible statement is not that $k$ does not matter, but that it matters until about ten
+features are retained and not afterwards, and that the default of twelve sits on the
+plateau. I have written it that way in Section~\ref{sec:res-sensitivity} rather than
+reporting the range alone, because the range alone would have implied a robustness the data
+do not show.
 
 \pt{R1.8 Feature selection performed outside the cross-validation folds.}
 \reply Corrected rather than merely acknowledged. Selection is now repeated inside every
@@ -526,9 +535,16 @@ than argued. $C$, $\varepsilon$ and $\gamma$ are now drawn from continuous log-u
 distributions, so the randomised search is a genuine randomised search. Section~\ref{sec:res-kernels}
 (Table~\ref{tab:search}) reports the exhaustive grid alongside randomised search at three budgets: the
 \GridFits{}-fit grid reaches $\GridRtwo$ in $\GridSecs$~s, against $\RandTwentyRtwo$ at 20
-iterations and $\RandTwoHundredRtwo$ at 200. Since the search costs seconds, the larger
-budget is used throughout the revision and the small-budget limitation is removed rather than
-defended. Every kernel is now tuned over its own hyperparameters, not only the RBF
+iterations ($\RandTwentySecs$~s), $\RandSixtyRtwo$ at 60 ($\RandSixtySecs$~s) and
+$\RandTwoHundredRtwo$ at 200 ($\RandTwoHundredSecs$~s). I should correct one thing I would
+otherwise have written here: the search costs minutes, not the nine seconds quoted in the
+previous version, and the exhaustive grid costs \GridSecsMin{}~minutes. That is still
+affordable, so your point stands in full --- there was no computational case for the small
+budget, the grid is now reported alongside the randomised search, and the limitation is
+removed rather than defended. The returns are also not monotone in the budget: 60 iterations
+give the best score of the four settings, and 200 iterations cost seven times as much to
+arrive at slightly less. That is single-split sampling noise, and it is part of why the
+significance testing is done over repeated splits. Every kernel is now tuned over its own hyperparameters, not only the RBF
 (Table~\ref{tab:kernels}). The previous version's Table 5 has been deleted and its content folded into the text.
 
 \pt{R2.13 Why is stratification needed in a regression problem?}

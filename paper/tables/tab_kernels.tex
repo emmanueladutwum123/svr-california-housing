@@ -1,1 +1,16 @@
-\begin{table}[htbp]\centering\caption{tab kernels --- pending, experiment still running.}\label{tab:kernels}\begin{tabular}{c}\toprule pending \\ \bottomrule\end{tabular}\end{table}
+\begin{table}[htbp]
+\centering
+\caption{Every kernel tuned over its own hyperparameters (20 randomised iterations, three-fold CV).}\label{tab:kernels}
+\small
+\begin{tabular}{lccr}
+\toprule
+Kernel & Test $R^2$ & Test RMSE & Search time (s) \\
+\midrule
+rbf & 0.7702 & 0.5517 & 90 \\
+linear & 0.6469 & 0.6839 & 143 \\
+poly2 & 0.6613 & 0.6697 & 152 \\
+poly3 & 0.6650 & 0.6661 & 337 \\
+sigmoid & 0.3207 & 0.9486 & 52 \\
+\bottomrule
+\end{tabular}
+\end{table}

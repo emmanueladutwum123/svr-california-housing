@@ -1,0 +1,1608 @@
+{
+  "weights": [
+    {
+      "w_mi": 0.0,
+      "w_pearson": 0.0,
+      "w_rf": 1.0,
+      "overlap_with_default": 10,
+      "r2": 0.7662,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "AveOccup",
+        "Longitude",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Coastal_Proximity",
+        "Latitude",
+        "Location_Score",
+        "AveBedrms",
+        "Bedroom_Ratio",
+        "Room_Value_Score"
+      ]
+    },
+    {
+      "w_mi": 0.0,
+      "w_pearson": 0.1,
+      "w_rf": 0.9,
+      "overlap_with_default": 11,
+      "r2": 0.7648,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "AveOccup",
+        "Age_Income_Interaction",
+        "Longitude",
+        "Rooms_per_Person",
+        "Room_Value_Score",
+        "Coastal_Proximity",
+        "Latitude",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.0,
+      "w_pearson": 0.2,
+      "w_rf": 0.8,
+      "overlap_with_default": 11,
+      "r2": 0.7648,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "AveOccup",
+        "Room_Value_Score",
+        "Rooms_per_Person",
+        "Longitude",
+        "Coastal_Proximity",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score",
+        "Latitude"
+      ]
+    },
+    {
+      "w_mi": 0.0,
+      "w_pearson": 0.3,
+      "w_rf": 0.7,
+      "overlap_with_default": 11,
+      "r2": 0.7648,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "AveOccup",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Coastal_Proximity",
+        "Modernization_Score",
+        "Longitude",
+        "Latitude"
+      ]
+    },
+    {
+      "w_mi": 0.0,
+      "w_pearson": 0.4,
+      "w_rf": 0.6,
+      "overlap_with_default": 11,
+      "r2": 0.7648,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score",
+        "AveOccup",
+        "Coastal_Proximity",
+        "Latitude",
+        "Longitude"
+      ]
+    },
+    {
+      "w_mi": 0.0,
+      "w_pearson": 0.5,
+      "w_rf": 0.5,
+      "overlap_with_default": 10,
+      "r2": 0.7128,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Rooms_per_Person",
+        "Modernization_Score",
+        "Coastal_Proximity",
+        "AveOccup",
+        "Latitude",
+        "AveRooms"
+      ]
+    },
+    {
+      "w_mi": 0.0,
+      "w_pearson": 0.6,
+      "w_rf": 0.4,
+      "overlap_with_default": 10,
+      "r2": 0.7128,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Rooms_per_Person",
+        "Modernization_Score",
+        "Coastal_Proximity",
+        "AveRooms",
+        "Latitude",
+        "AveOccup"
+      ]
+    },
+    {
+      "w_mi": 0.0,
+      "w_pearson": 0.7,
+      "w_rf": 0.3,
+      "overlap_with_default": 11,
+      "r2": 0.7512,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Income_Density",
+        "Bedroom_Ratio",
+        "Modernization_Score",
+        "Rooms_per_Person",
+        "Coastal_Proximity",
+        "AveRooms",
+        "Latitude",
+        "Location_Score"
+      ]
+    },
+    {
+      "w_mi": 0.0,
+      "w_pearson": 0.8,
+      "w_rf": 0.2,
+      "overlap_with_default": 11,
+      "r2": 0.7512,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Income_Density",
+        "Bedroom_Ratio",
+        "Modernization_Score",
+        "Rooms_per_Person",
+        "Coastal_Proximity",
+        "AveRooms",
+        "Latitude",
+        "Location_Score"
+      ]
+    },
+    {
+      "w_mi": 0.0,
+      "w_pearson": 0.9,
+      "w_rf": 0.1,
+      "overlap_with_default": 11,
+      "r2": 0.7512,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Income_Density",
+        "Bedroom_Ratio",
+        "Modernization_Score",
+        "Rooms_per_Person",
+        "Coastal_Proximity",
+        "AveRooms",
+        "Latitude",
+        "Location_Score"
+      ]
+    },
+    {
+      "w_mi": 0.0,
+      "w_pearson": 1.0,
+      "w_rf": 0.0,
+      "overlap_with_default": 10,
+      "r2": 0.7142,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Income_Density",
+        "Bedroom_Ratio",
+        "Modernization_Score",
+        "Rooms_per_Person",
+        "AveRooms",
+        "Coastal_Proximity",
+        "Latitude",
+        "HouseAge"
+      ]
+    },
+    {
+      "w_mi": 0.1,
+      "w_pearson": 0.0,
+      "w_rf": 0.9,
+      "overlap_with_default": 11,
+      "r2": 0.7662,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "AveOccup",
+        "Age_Income_Interaction",
+        "Coastal_Proximity",
+        "Latitude",
+        "Location_Score",
+        "Rooms_per_Person",
+        "Room_Value_Score",
+        "Bedroom_Ratio",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.1,
+      "w_pearson": 0.1,
+      "w_rf": 0.8,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Longitude",
+        "AveOccup",
+        "Room_Value_Score",
+        "Coastal_Proximity",
+        "Latitude",
+        "Rooms_per_Person",
+        "Location_Score",
+        "Bedroom_Ratio",
+        "Income_Density"
+      ]
+    },
+    {
+      "w_mi": 0.1,
+      "w_pearson": 0.2,
+      "w_rf": 0.7,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Longitude",
+        "Coastal_Proximity",
+        "AveOccup",
+        "Latitude",
+        "Rooms_per_Person",
+        "Location_Score",
+        "Bedroom_Ratio",
+        "Income_Density"
+      ]
+    },
+    {
+      "w_mi": 0.1,
+      "w_pearson": 0.3,
+      "w_rf": 0.6,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Longitude",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Latitude",
+        "Bedroom_Ratio",
+        "Location_Score",
+        "AveOccup",
+        "Income_Density"
+      ]
+    },
+    {
+      "w_mi": 0.1,
+      "w_pearson": 0.4,
+      "w_rf": 0.5,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Latitude",
+        "Longitude",
+        "Modernization_Score",
+        "Location_Score"
+      ]
+    },
+    {
+      "w_mi": 0.1,
+      "w_pearson": 0.5,
+      "w_rf": 0.4,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Rooms_per_Person",
+        "Coastal_Proximity",
+        "Latitude",
+        "Modernization_Score",
+        "Longitude",
+        "Location_Score"
+      ]
+    },
+    {
+      "w_mi": 0.1,
+      "w_pearson": 0.6,
+      "w_rf": 0.3,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Rooms_per_Person",
+        "Coastal_Proximity",
+        "Modernization_Score",
+        "Latitude",
+        "Location_Score",
+        "Longitude"
+      ]
+    },
+    {
+      "w_mi": 0.1,
+      "w_pearson": 0.7,
+      "w_rf": 0.2,
+      "overlap_with_default": 11,
+      "r2": 0.7512,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score",
+        "Rooms_per_Person",
+        "Coastal_Proximity",
+        "Latitude",
+        "Location_Score",
+        "AveRooms"
+      ]
+    },
+    {
+      "w_mi": 0.1,
+      "w_pearson": 0.8,
+      "w_rf": 0.1,
+      "overlap_with_default": 11,
+      "r2": 0.7512,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score",
+        "Rooms_per_Person",
+        "Coastal_Proximity",
+        "Latitude",
+        "AveRooms",
+        "Location_Score"
+      ]
+    },
+    {
+      "w_mi": 0.1,
+      "w_pearson": 0.9,
+      "w_rf": 0.0,
+      "overlap_with_default": 11,
+      "r2": 0.7512,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score",
+        "Rooms_per_Person",
+        "Coastal_Proximity",
+        "Latitude",
+        "AveRooms",
+        "Location_Score"
+      ]
+    },
+    {
+      "w_mi": 0.2,
+      "w_pearson": 0.0,
+      "w_rf": 0.8,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Age_Income_Interaction",
+        "AveOccup",
+        "Rooms_per_Person",
+        "Room_Value_Score",
+        "Bedroom_Ratio",
+        "Income_Density"
+      ]
+    },
+    {
+      "w_mi": 0.2,
+      "w_pearson": 0.1,
+      "w_rf": 0.7,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Age_Income_Interaction",
+        "Latitude",
+        "Coastal_Proximity",
+        "Location_Score",
+        "Room_Value_Score",
+        "AveOccup",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density"
+      ]
+    },
+    {
+      "w_mi": 0.2,
+      "w_pearson": 0.2,
+      "w_rf": 0.6,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Longitude",
+        "Latitude",
+        "Coastal_Proximity",
+        "Location_Score",
+        "Rooms_per_Person",
+        "AveOccup",
+        "Bedroom_Ratio",
+        "Income_Density"
+      ]
+    },
+    {
+      "w_mi": 0.2,
+      "w_pearson": 0.3,
+      "w_rf": 0.5,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Longitude",
+        "Latitude",
+        "Coastal_Proximity",
+        "Location_Score",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.2,
+      "w_pearson": 0.4,
+      "w_rf": 0.4,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Coastal_Proximity",
+        "Latitude",
+        "Longitude",
+        "Location_Score",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.2,
+      "w_pearson": 0.5,
+      "w_rf": 0.3,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Coastal_Proximity",
+        "Latitude",
+        "Location_Score",
+        "Bedroom_Ratio",
+        "Longitude",
+        "Income_Density",
+        "Rooms_per_Person",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.2,
+      "w_pearson": 0.6,
+      "w_rf": 0.2,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Coastal_Proximity",
+        "Latitude",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Location_Score",
+        "Rooms_per_Person",
+        "Longitude",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.2,
+      "w_pearson": 0.7,
+      "w_rf": 0.1,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Coastal_Proximity",
+        "Latitude",
+        "Rooms_per_Person",
+        "Modernization_Score",
+        "Location_Score",
+        "Longitude"
+      ]
+    },
+    {
+      "w_mi": 0.2,
+      "w_pearson": 0.8,
+      "w_rf": 0.0,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Coastal_Proximity",
+        "Latitude",
+        "Modernization_Score",
+        "Rooms_per_Person",
+        "Location_Score",
+        "Longitude"
+      ]
+    },
+    {
+      "w_mi": 0.3,
+      "w_pearson": 0.0,
+      "w_rf": 0.7,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "AveOccup",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density"
+      ]
+    },
+    {
+      "w_mi": 0.3,
+      "w_pearson": 0.1,
+      "w_rf": 0.6,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Age_Income_Interaction",
+        "Coastal_Proximity",
+        "Room_Value_Score",
+        "Rooms_per_Person",
+        "AveOccup",
+        "Bedroom_Ratio",
+        "Income_Density"
+      ]
+    },
+    {
+      "w_mi": 0.3,
+      "w_pearson": 0.2,
+      "w_rf": 0.5,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Longitude",
+        "Room_Value_Score",
+        "Latitude",
+        "Location_Score",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "AveOccup"
+      ]
+    },
+    {
+      "w_mi": 0.3,
+      "w_pearson": 0.3,
+      "w_rf": 0.4,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Longitude",
+        "Latitude",
+        "Location_Score",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.3,
+      "w_pearson": 0.4,
+      "w_rf": 0.3,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Latitude",
+        "Longitude",
+        "Location_Score",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.3,
+      "w_pearson": 0.5,
+      "w_rf": 0.2,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Latitude",
+        "Coastal_Proximity",
+        "Location_Score",
+        "Longitude",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Rooms_per_Person",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.3,
+      "w_pearson": 0.6,
+      "w_rf": 0.1,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Latitude",
+        "Coastal_Proximity",
+        "Location_Score",
+        "Longitude",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Rooms_per_Person",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.3,
+      "w_pearson": 0.7,
+      "w_rf": 0.0,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Latitude",
+        "Coastal_Proximity",
+        "Location_Score",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Longitude",
+        "Rooms_per_Person",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.4,
+      "w_pearson": 0.0,
+      "w_rf": 0.6,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Rooms_per_Person",
+        "AveOccup",
+        "Bedroom_Ratio",
+        "Income_Density"
+      ]
+    },
+    {
+      "w_mi": 0.4,
+      "w_pearson": 0.1,
+      "w_rf": 0.5,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Age_Income_Interaction",
+        "Room_Value_Score",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "AveOccup",
+        "Income_Density"
+      ]
+    },
+    {
+      "w_mi": 0.4,
+      "w_pearson": 0.2,
+      "w_rf": 0.4,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.4,
+      "w_pearson": 0.3,
+      "w_rf": 0.3,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Longitude",
+        "Latitude",
+        "Location_Score",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.4,
+      "w_pearson": 0.4,
+      "w_rf": 0.2,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Latitude",
+        "Longitude",
+        "Location_Score",
+        "Coastal_Proximity",
+        "Bedroom_Ratio",
+        "Rooms_per_Person",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.4,
+      "w_pearson": 0.5,
+      "w_rf": 0.1,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Latitude",
+        "Location_Score",
+        "Coastal_Proximity",
+        "Longitude",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Rooms_per_Person",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.4,
+      "w_pearson": 0.6,
+      "w_rf": 0.0,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Latitude",
+        "Location_Score",
+        "Coastal_Proximity",
+        "Longitude",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Rooms_per_Person",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.5,
+      "w_pearson": 0.0,
+      "w_rf": 0.5,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "AveOccup",
+        "Bedroom_Ratio",
+        "Income_Density"
+      ]
+    },
+    {
+      "w_mi": 0.5,
+      "w_pearson": 0.1,
+      "w_rf": 0.4,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "AveOccup"
+      ]
+    },
+    {
+      "w_mi": 0.5,
+      "w_pearson": 0.2,
+      "w_rf": 0.3,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.5,
+      "w_pearson": 0.3,
+      "w_rf": 0.2,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.5,
+      "w_pearson": 0.4,
+      "w_rf": 0.1,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Location_Score",
+        "Latitude",
+        "Longitude",
+        "Coastal_Proximity",
+        "Bedroom_Ratio",
+        "Rooms_per_Person",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.5,
+      "w_pearson": 0.5,
+      "w_rf": 0.0,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Latitude",
+        "Location_Score",
+        "Longitude",
+        "Coastal_Proximity",
+        "Bedroom_Ratio",
+        "Rooms_per_Person",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.6,
+      "w_pearson": 0.0,
+      "w_rf": 0.4,
+      "overlap_with_default": 11,
+      "r2": 0.7665,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "AveOccup",
+        "Income_Density"
+      ]
+    },
+    {
+      "w_mi": 0.6,
+      "w_pearson": 0.1,
+      "w_rf": 0.3,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.6,
+      "w_pearson": 0.2,
+      "w_rf": 0.2,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Room_Value_Score",
+        "Coastal_Proximity",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.6,
+      "w_pearson": 0.3,
+      "w_rf": 0.1,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Age_Income_Interaction",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.6,
+      "w_pearson": 0.4,
+      "w_rf": 0.0,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Location_Score",
+        "Latitude",
+        "Longitude",
+        "Coastal_Proximity",
+        "Bedroom_Ratio",
+        "Rooms_per_Person",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.7,
+      "w_pearson": 0.0,
+      "w_rf": 0.3,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.7,
+      "w_pearson": 0.1,
+      "w_rf": 0.2,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.7,
+      "w_pearson": 0.2,
+      "w_rf": 0.1,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Room_Value_Score",
+        "Coastal_Proximity",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.7,
+      "w_pearson": 0.3,
+      "w_rf": 0.0,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Location_Score",
+        "Longitude",
+        "Room_Value_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.8,
+      "w_pearson": 0.0,
+      "w_rf": 0.2,
+      "overlap_with_default": 11,
+      "r2": 0.7674,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "AveRooms"
+      ]
+    },
+    {
+      "w_mi": 0.8,
+      "w_pearson": 0.1,
+      "w_rf": 0.1,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.8,
+      "w_pearson": 0.2,
+      "w_rf": 0.0,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Room_Value_Score",
+        "Coastal_Proximity",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 0.9,
+      "w_pearson": 0.0,
+      "w_rf": 0.1,
+      "overlap_with_default": 11,
+      "r2": 0.7674,
+      "features": [
+        "Income_per_Room",
+        "Longitude",
+        "MedInc",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "AveRooms"
+      ]
+    },
+    {
+      "w_mi": 0.9,
+      "w_pearson": 0.1,
+      "w_rf": 0.0,
+      "overlap_with_default": 12,
+      "r2": 0.7664,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Longitude",
+        "Location_Score",
+        "Latitude",
+        "Coastal_Proximity",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    {
+      "w_mi": 1.0,
+      "w_pearson": 0.0,
+      "w_rf": 0.0,
+      "overlap_with_default": 11,
+      "r2": 0.7674,
+      "features": [
+        "Income_per_Room",
+        "Longitude",
+        "Location_Score",
+        "MedInc",
+        "Latitude",
+        "Coastal_Proximity",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "AveRooms"
+      ]
+    }
+  ],
+  "weights_summary": {
+    "n": 66,
+    "min": 0.7128,
+    "max": 0.7674,
+    "mean": 0.7626,
+    "sd": 0.0117,
+    "range": 0.0546,
+    "default_r2": 0.7664,
+    "min_overlap": 10
+  },
+  "k_sweep": {
+    "4": {
+      "r2_uniform": 0.5745,
+      "r2_auto": 0.5744,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction"
+      ]
+    },
+    "6": {
+      "r2_uniform": 0.6671,
+      "r2_auto": 0.6357,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Longitude",
+        "Latitude"
+      ]
+    },
+    "8": {
+      "r2_uniform": 0.6714,
+      "r2_auto": 0.6484,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Longitude",
+        "Latitude",
+        "Location_Score",
+        "Coastal_Proximity"
+      ]
+    },
+    "10": {
+      "r2_uniform": 0.7683,
+      "r2_auto": 0.7517,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Longitude",
+        "Latitude",
+        "Location_Score",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio"
+      ]
+    },
+    "12": {
+      "r2_uniform": 0.7664,
+      "r2_auto": 0.7471,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Longitude",
+        "Latitude",
+        "Location_Score",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score"
+      ]
+    },
+    "14": {
+      "r2_uniform": 0.7653,
+      "r2_auto": 0.7233,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Longitude",
+        "Latitude",
+        "Location_Score",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score",
+        "AveRooms",
+        "AveOccup"
+      ]
+    },
+    "16": {
+      "r2_uniform": 0.7654,
+      "r2_auto": 0.7186,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Longitude",
+        "Latitude",
+        "Location_Score",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score",
+        "AveRooms",
+        "AveOccup",
+        "HouseAge",
+        "AveBedrms"
+      ]
+    },
+    "18": {
+      "r2_uniform": 0.7638,
+      "r2_auto": 0.7193,
+      "features": [
+        "Income_per_Room",
+        "MedInc",
+        "Room_Value_Score",
+        "Age_Income_Interaction",
+        "Longitude",
+        "Latitude",
+        "Location_Score",
+        "Coastal_Proximity",
+        "Rooms_per_Person",
+        "Bedroom_Ratio",
+        "Income_Density",
+        "Modernization_Score",
+        "AveRooms",
+        "AveOccup",
+        "HouseAge",
+        "AveBedrms",
+        "Population_Density",
+        "Population"
+      ]
+    }
+  },
+  "scaler_thresholds": {
+    "out=0.01|skew=1.0": {
+      "r2": 0.7474,
+      "n_robust": 8,
+      "n_minmax": 3,
+      "n_standard": 1
+    },
+    "out=0.01|skew=2.0": {
+      "r2": 0.7474,
+      "n_robust": 8,
+      "n_minmax": 3,
+      "n_standard": 1
+    },
+    "out=0.01|skew=3.0": {
+      "r2": 0.7474,
+      "n_robust": 8,
+      "n_minmax": 3,
+      "n_standard": 1
+    },
+    "out=0.05|skew=1.0": {
+      "r2": 0.7473,
+      "n_robust": 7,
+      "n_minmax": 3,
+      "n_standard": 2
+    },
+    "out=0.05|skew=2.0": {
+      "r2": 0.7471,
+      "n_robust": 5,
+      "n_minmax": 3,
+      "n_standard": 4
+    },
+    "out=0.05|skew=3.0": {
+      "r2": 0.747,
+      "n_robust": 4,
+      "n_minmax": 3,
+      "n_standard": 5
+    },
+    "out=0.10|skew=1.0": {
+      "r2": 0.7473,
+      "n_robust": 7,
+      "n_minmax": 3,
+      "n_standard": 2
+    },
+    "out=0.10|skew=2.0": {
+      "r2": 0.7471,
+      "n_robust": 5,
+      "n_minmax": 3,
+      "n_standard": 4
+    },
+    "out=0.10|skew=3.0": {
+      "r2": 0.747,
+      "n_robust": 4,
+      "n_minmax": 3,
+      "n_standard": 5
+    }
+  },
+  "reference_top12": [
+    "Income_per_Room",
+    "MedInc",
+    "Room_Value_Score",
+    "Age_Income_Interaction",
+    "Longitude",
+    "Latitude",
+    "Location_Score",
+    "Coastal_Proximity",
+    "Rooms_per_Person",
+    "Bedroom_Ratio",
+    "Income_Density",
+    "Modernization_Score"
+  ]
+}

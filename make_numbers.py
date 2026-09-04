@@ -17,9 +17,20 @@ def load(name):
     return json.load(open(p)) if os.path.exists(p) else None
 
 
+_DIGITS = {'0': 'Zero', '1': 'One', '2': 'Two', '3': 'Three', '4': 'Four',
+           '5': 'Five', '6': 'Six', '7': 'Seven', '8': 'Eight', '9': 'Nine'}
+
+
+def _texname(name):
+    """LaTeX control sequences may contain letters only: \\KernPoly2 is not a
+    valid macro name and fails with 'Missing \\begin{document}'. Digits in a
+    generated name are spelled out so any key from a result file is safe."""
+    return ''.join(_DIGITS.get(c, c) for c in name if c.isalpha() or c.isdigit())
+
+
 def m(name, value, fmt='%.3f'):
-    macros[name] = ('??' if value is None else
-                    (fmt % value if isinstance(value, (int, float)) else str(value)))
+    macros[_texname(name)] = ('??' if value is None else
+                              (fmt % value if isinstance(value, (int, float)) else str(value)))
 
 
 def pval(x):
@@ -34,7 +45,7 @@ def pval(x):
 
 
 def mp(name, x):
-    macros[name] = pval(x)
+    macros[_texname(name)] = pval(x)
 
 
 # ---- E1b reproduction ------------------------------------------------------
@@ -185,6 +196,17 @@ if d:
     m('WeightMinOverlap', w['min_overlap'], '%d')
     kv = {int(k): v['r2_uniform'] for k, v in d['k_sweep'].items()}
     m('KrangeLo', min(kv.values()), '%.4f'); m('KrangeHi', max(kv.values()), '%.4f')
+    m('KbestAt', max(kv, key=kv.get), '%d')
+    m('KminAt', min(kv), '%d'); m('KmaxAt', max(kv), '%d')
+    # where does it stop mattering? first k beyond which every score is within
+    # 0.01 of the best -- the plateau the default k=12 actually sits on.
+    _best = max(kv.values())
+    _plateau = sorted(k for k in kv if all(_best - kv[j] <= 0.01 for j in kv if j >= k))
+    if _plateau:
+        _k0 = _plateau[0]
+        m('KplateauFrom', _k0, '%d')
+        m('KplateauRange', max(kv[j] for j in kv if j >= _k0) - min(kv[j] for j in kv if j >= _k0), '%.4f')
+        m('KbelowPlateau', kv[min(kv)], '%.4f')
     m('KbestK', max(kv, key=kv.get), '%d')
     tv = [v['r2'] for v in d['scaler_thresholds'].values()]
     m('ThreshRange', max(tv) - min(tv), '%.4f')
@@ -198,6 +220,16 @@ if d:
     m('GridFits', d['search']['grid_64']['n_fits'], '%d')
     m('GridSecs', d['search']['grid_64']['seconds'], '%.0f')
     m('RandTwentyRtwo', d['search']['random_20']['r2'], '%.4f')
+    m('GridSecsMin', d['search']['grid_64']['seconds'] / 60.0, '%.1f')
+    for _k, _tag in [('random_20', 'RandTwenty'), ('random_60', 'RandSixty'),
+                     ('random_200', 'RandTwoHundred')]:
+        if _k in d['search']:
+            m(_tag + 'Rtwo', d['search'][_k]['r2'], '%.4f')
+            m(_tag + 'Secs', d['search'][_k]['seconds'], '%.0f')
+    _best = max(d['search'], key=lambda k: d['search'][k]['r2'])
+    macros['SearchBest'] = _best.replace('_', ' ')
+    m('SearchBestRtwo', d['search'][_best]['r2'], '%.4f')
+    m('SearchBestSecs', d['search'][_best]['seconds'], '%.0f')
     m('RandTwoHundredRtwo', d['search']['random_200']['r2'], '%.4f')
     c = d['training_size']['curve']
     ns = sorted(int(x) for x in c)
