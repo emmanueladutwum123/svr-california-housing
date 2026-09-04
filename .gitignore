@@ -30,3 +30,6 @@ results/*_checkpoint.json
 # Local copy of the v1 sources used for reference while revising.
 # The v1 material is already in this repository's history at the root.
 manuscript/
+
+# Regenerate with ./make_submission_zip.sh
+SVR_Revision_Source.zip
